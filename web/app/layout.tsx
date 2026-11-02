@@ -7,35 +7,37 @@ import { rootMetadata } from "@/lib/metadata";
 
 import "./globals.css";
 
-const plusJakartaSans = localFont({
+const instrumentSans = localFont({
   src: [
     {
-      path: "./fonts/plus-jakarta-sans/plus-jakarta-sans-400.woff2",
-      weight: "400",
+      path: "./fonts/instrument-sans/instrument-sans-latin-wght-normal.woff2",
+      weight: "400 700",
       style: "normal",
     },
     {
-      path: "./fonts/plus-jakarta-sans/plus-jakarta-sans-500.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "./fonts/plus-jakarta-sans/plus-jakarta-sans-600.woff2",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "./fonts/plus-jakarta-sans/plus-jakarta-sans-700.woff2",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "./fonts/plus-jakarta-sans/plus-jakarta-sans-italic-600.woff2",
-      weight: "600",
+      path: "./fonts/instrument-sans/instrument-sans-latin-wght-italic.woff2",
+      weight: "400 700",
       style: "italic",
     },
   ],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const ibmPlexMono = localFont({
+  src: [
+    {
+      path: "./fonts/ibm-plex-mono/ibm-plex-mono-latin-400-normal.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/ibm-plex-mono/ibm-plex-mono-latin-500-normal.woff2",
+      weight: "500",
+      style: "normal",
+    },
+  ],
+  variable: "--font-plex-mono",
   display: "swap",
 });
 
@@ -47,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${plusJakartaSans.variable} h-full antialiased`}>
+    <html lang="en" className={`${instrumentSans.variable} ${ibmPlexMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">
         <YouTubeConsentProvider>
           <TooltipProvider>{children}</TooltipProvider>

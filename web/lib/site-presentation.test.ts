@@ -28,12 +28,12 @@ const expected = {
   teaser: {
     primary: 'Join the community',
     program: 'archive',
-    speakers: true,
+    speakers: false,
     tickets: 'closed',
     purchase: false,
-    noIndex: false,
+    noIndex: true,
     firstSection: 'about',
-    schedule: true,
+    schedule: false,
   },
   tickets: {
     primary: 'Get your ticket',
@@ -153,13 +153,14 @@ describe('event stage matrix', () => {
                 prominent: true,
               }
         );
-        expect(presentation.homepage.sections).toContain('sponsors');
+        expect(presentation.homepage.sections).not.toContain('sponsors');
         expect(presentation.homepage.sections).toContain('expect');
+        expect(presentation.homepage.sections).toContain('topics');
       }
     }
   );
 
-  it.each(['teaser', 'live', 'recap'] as const)(
+  it.each(['live', 'recap'] as const)(
     'keeps the %s lineup visible without early-speaker IDs',
     (stage) => {
       const presentation = createSitePresentation(stage, 'closed', testConfig);
@@ -219,22 +220,33 @@ describe('event stage matrix', () => {
     expect(recap.hero.secondaryAction?.label).toContain(String(testConfig.upcoming.edition));
   });
 
-  it('shows the previous edition archive in teaser mode and switches to upcoming content later', () => {
+  it('keeps the inherited program archive unlinked in teaser mode and switches to upcoming content later', () => {
     const teaser = createSitePresentation('teaser', 'recruiting', testConfig);
     const live = createSitePresentation('live', 'recruiting', testConfig);
 
     expect(teaser.program.mode).toBe('archive');
     expect(teaser.program.isArchive).toBe(true);
-    expect(teaser.program.scheduleEyebrow).toContain(String(testConfig.archive.edition));
-    expect(teaser.program.speakerEyebrow).toContain(String(testConfig.archive.edition));
-    expect(teaser.navigation.scheduleLabel).toBe(`${testConfig.archive.edition} Schedule`);
-    expect(teaser.navigation.speakersLabel).toBe(`${testConfig.archive.edition} Speakers`);
-    expect(teaser.homepage.sections).toContain('schedule');
-    expect(teaser.homepage.sections).toContain('speakers');
-    expect(teaser.homepage.sections).toContain('venue');
+    expect(teaser.program.noIndex).toBe(true);
+    expect(teaser.navigation.showSchedule).toBe(false);
+    expect(teaser.navigation.showSpeakers).toBe(false);
+    expect(teaser.homepage.sections).toEqual(['about', 'expect', 'topics', 'moments']);
 
     expect(live.program.mode).toBe('published');
     expect(live.program.isArchive).toBe(false);
+  });
+
+  it('never renders a sponsors section on the homepage', () => {
+    for (const stage of EVENT_STAGES) {
+      for (const programPublished of [false, true]) {
+        for (const ticketsSoldOut of [false, true]) {
+          const presentation = createSitePresentation(stage, 'recruiting', testConfig, {
+            programPublished,
+            ticketsSoldOut,
+          });
+          expect(presentation.homepage.sections).not.toContain('sponsors');
+        }
+      }
+    }
   });
 
   it('uses ticket options for published programs and sold-out messaging', () => {
@@ -270,8 +282,8 @@ describe('event stage matrix', () => {
       testConfig.campaigns.announcedSpeakerIds
     );
     expect(tickets.program.speakerEyebrow).toBe('Early announcements');
-    expect(tickets.program.speakerTitleLead).toBe('Meet the voices');
-    expect(tickets.program.speakerTitleAccent).toBe('shaping the next edition');
+    expect(tickets.program.speakerTitleLead).toBe('Meet the builders');
+    expect(tickets.program.speakerTitleAccent).toBe('on our first stage');
   });
 
   it('keeps sponsorship independent from the event stage', () => {

@@ -79,7 +79,7 @@ function SponsorTierBand({
   return (
     <MotionReveal delay={delay}>
       <div className={cn(showDivider && 'border-t border-dashed border-primary/10 pt-12')}>
-        <p className="mb-5 text-center text-xs font-semibold uppercase tracking-[0.14em] text-primary/70">
+        <p className="mb-5 text-center annotation text-primary/70">
           {tierConfig[tier].title}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
@@ -113,12 +113,12 @@ function SponsorEditionGroup({
         <MotionReveal>
           <h2
             id={`sponsors-${edition}-title`}
-            className="font-heading text-3xl font-bold leading-[1.08] tracking-tight text-primary sm:text-4xl lg:text-5xl"
+            className="font-heading text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-primary sm:text-4xl lg:text-5xl"
           >
             {archive ? 'Thank you to our' : 'Meet our'}
             {' '}
             <br />
-            <span className="text-[#0bbbef]">{edition} partners</span>
+            <span className="text-signal-ink">{edition} partners</span>
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
             {archive
@@ -152,23 +152,23 @@ export function Sponsors({ phase, tone = 'default' }: SponsorsProps) {
       <div className="space-y-16">
         {phase === 'recruiting' ? (
           <MotionReveal delay={0.2}>
-            <div className="relative overflow-hidden rounded-3xl bg-primary px-6 py-10 text-white shadow-xl sm:px-10 sm:py-12 lg:px-14">
+            <div className="relative overflow-hidden rounded-2xl bg-primary px-6 py-10 text-on-dark shadow-xl sm:px-10 sm:py-12 lg:px-14">
               <div
-                className="absolute -right-24 -top-24 size-72 rounded-full bg-[#0bbbef]/20 blur-3xl"
+                className="absolute -right-24 -top-24 size-72 rounded-full hidden"
                 aria-hidden
               />
               <div className="relative grid items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-12">
                 <div className="max-w-2xl">
-                  <div className="mb-5 flex size-12 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15">
-                    <Handshake className="size-6 text-[#0bbbef]" />
+                  <div className="mb-5 flex size-12 items-center justify-center rounded-2xl bg-on-dark/10 ring-1 ring-on-dark/15">
+                    <Handshake className="size-6 text-signal" />
                   </div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0bbbef]">
+                  <p className="annotation text-signal">
                     Partnerships for {EVENT_CONFIG.sponsorship.edition}
                   </p>
-                  <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+                  <h2 className="mt-3 font-heading text-3xl font-semibold tracking-[-0.025em] sm:text-4xl">
                     Help shape the next CNS Munich
                   </h2>
-                  <p className="mt-4 text-lg leading-relaxed text-white/75">
+                  <p className="mt-4 text-lg leading-relaxed text-on-dark/75">
                     Meet a focused cloud native community, support accessible knowledge sharing, and
                     create meaningful conversations with practitioners. We are now speaking with
                     partners for our next edition.
@@ -184,7 +184,7 @@ export function Sponsors({ phase, tone = 'default' }: SponsorsProps) {
                       />
                     }
                     size="lg"
-                    className="bg-[#0bbbef] text-primary hover:bg-[#35c8f2]"
+                    className="bg-signal text-graphite hover:bg-signal-hover"
                   >
                     <Mail className="size-4" />
                     Register your interest
@@ -197,7 +197,7 @@ export function Sponsors({ phase, tone = 'default' }: SponsorsProps) {
                       }
                       variant="outline"
                       size="lg"
-                      className="border-white/25 bg-white/5 text-white hover:bg-white/10 hover:text-white"
+                      className="border-on-dark/25 bg-on-dark/5 text-on-dark hover:bg-on-dark/10 hover:text-on-dark"
                     >
                       Sponsor prospectus
                       <ArrowRight className="size-4" />

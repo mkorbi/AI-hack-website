@@ -52,11 +52,11 @@ export function Hotels({ tone = "default" }: HotelsProps) {
     <Section id="hotels" className={cn(SECTION_TONE_CLASS[tone])}>
       <div className="mx-auto max-w-3xl text-center">
         <MotionReveal>
-          <h2 className="font-heading text-3xl font-bold leading-[1.08] tracking-tight text-primary sm:text-4xl lg:text-5xl">
+          <h2 className="font-heading text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-primary sm:text-4xl lg:text-5xl">
             Hotels close to,
             {' '}
             <br />
-            <span className="text-[#0bbbef]">the venue</span>
+            <span className="text-signal-ink">the venue</span>
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
             Walking distance from smartvillage Bogenhausen — practical options
@@ -81,12 +81,12 @@ export function Hotels({ tone = "default" }: HotelsProps) {
           <div className="bg-gradient-to-br from-primary/8 to-primary/[0.03] p-6 sm:p-8">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h3 className="font-heading text-xl font-bold text-primary sm:text-2xl">
+                <h3 className="font-heading text-xl font-semibold text-primary sm:text-2xl">
                   {highlightedHotel.name}
                 </h3>
                 {highlightedHotel.distance ? (
                   <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground sm:text-base">
-                    <MapPin className="size-4 text-[#0bbbef]" />
+                    <MapPin className="size-4 text-signal-ink" />
                     {highlightedHotel.distance}
                   </p>
                 ) : null}
@@ -119,14 +119,14 @@ export function Hotels({ tone = "default" }: HotelsProps) {
 
       {otherHotels.length > 0 ? (
         <div className="mt-8 space-y-4">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.14em] text-primary/70 sm:text-left">
+          <p className="text-center annotation text-primary/70 sm:text-left">
             More hotels nearby
           </p>
           {otherHotels.map((hotel, index) => (
             <MotionReveal key={hotel.name} delay={0.12 + index * 0.04}>
               <div className="flex flex-col gap-4 rounded-2xl bg-gradient-to-br from-primary/8 to-primary/[0.03] p-5 ring-1 ring-primary/10 transition-all hover:-translate-y-0.5 hover:shadow-md sm:flex-row sm:items-center sm:justify-between sm:p-6">
                 <div>
-                  <h4 className="font-heading text-lg font-bold text-primary">
+                  <h4 className="font-heading text-lg font-semibold text-primary">
                     {hotel.name}
                   </h4>
                   {hotel.amenities && hotel.amenities.length > 0 ? (

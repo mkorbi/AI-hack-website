@@ -15,12 +15,12 @@ const proposalThemes = [
   {
     icon: Mic2,
     title: 'Choose your format',
-    description: 'Talks, lightning talks, panel discussions, and workshops are welcome.',
+    description: 'Technical talks and hands-on sessions. Show the code, the architecture, and the numbers.',
   },
   {
     icon: Wrench,
     title: 'Bring real experience',
-    description: 'Cloud native, open source, platform engineering, AI, and the work around them.',
+    description: 'AI engineering, AI platforms, agents, retrieval, open models, and keeping it all secure.',
   },
 ] as const;
 
@@ -34,15 +34,15 @@ export function Cfp({ href, tone = 'default' }: CfpProps) {
     <Section id="call-for-proposals" className={cn('scroll-mt-24', SECTION_TONE_CLASS[tone])}>
       <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:gap-20">
         <MotionReveal>
-          <h2 className="font-heading text-3xl font-bold leading-[1.08] tracking-tight text-primary sm:text-4xl lg:text-5xl">
+          <h2 className="font-heading text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-primary sm:text-4xl lg:text-5xl">
             Your experience,
             {' '}
             <br />
-            <span className="text-[#0bbbef]">shared in Munich</span>
+            <span className="text-signal-ink">shared in Munich</span>
           </h2>
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted-foreground">
-            The Call for Proposals for CNS Munich 2027 is open. Help shape two days of useful,
-            community-driven learning.
+            The Call for Proposals for the first AI Hack Fest is open. No product pitches: tell
+            us what you built and what you learned.
           </p>
           <Button
             nativeButton={false}
@@ -63,7 +63,7 @@ export function Cfp({ href, tone = 'default' }: CfpProps) {
                   <Icon className="size-5 text-primary" aria-hidden />
                 </div>
                 <div>
-                  <h3 className="font-heading text-xl font-bold text-primary">{title}</h3>
+                  <h3 className="font-heading text-xl font-semibold text-primary">{title}</h3>
                   <p className="mt-2 max-w-xl leading-relaxed text-muted-foreground">
                     {description}
                   </p>

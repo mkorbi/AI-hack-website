@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Calendar, Heart, Users } from 'lucide-react';
+import { ArrowRight, Ban, Calendar, Clock } from 'lucide-react';
 
 import { MotionReveal } from '@/components/layout/motion-reveal';
 import { Section } from '@/components/layout/section';
@@ -17,21 +17,20 @@ export function About({ recap = false, tone = 'default' }: AboutProps) {
   const edition = recap ? EVENT_CONFIG.archive : EVENT_CONFIG.upcoming;
   const highlights = [
     { value: edition.ordinalLabel, label: 'Edition in Munich', icon: Calendar },
-    { value: '2', label: 'Conference days', icon: Users },
-    { value: '100%', label: 'Community-driven', icon: Heart },
+    { value: '1', label: 'Day of talks and hands-on', icon: Clock },
+    { value: '0', label: 'Sales pitches', icon: Ban },
   ];
-
   return (
     <Section id="about" className={cn(SECTION_TONE_CLASS[tone], 'py-20 md:py-28 lg:py-32')}>
       <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch lg:gap-20">
         <div>
           <MotionReveal>
-            <h2 className="font-heading text-3xl font-bold leading-[1.08] tracking-tight text-primary sm:text-4xl lg:text-5xl">
-              {recap ? 'Two days shaped' : 'Built by the community,'}
+            <h2 className="font-heading text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-primary sm:text-4xl lg:text-5xl">
+              {recap ? 'A day shaped' : 'Built by engineers,'}
               {' '}
               <br />
-              <span className="text-[#0bbbef]">
-                {recap ? 'by the community' : 'for the community'}
+              <span className="text-signal-ink">
+                {recap ? 'by the community' : 'for engineers'}
               </span>
             </h2>
           </MotionReveal>
@@ -41,35 +40,33 @@ export function About({ recap = false, tone = 'default' }: AboutProps) {
               {recap ? (
                 <>
                   <p>
-                    CNS Munich {EVENT_CONFIG.archive.edition} brought adopters and technologists
-                    from open source and cloud native ecosystems together for two focused days in
-                    the heart of Bavaria.
+                    {edition.name} {edition.edition} brought engineers who build AI systems
+                    together for one focused day in Munich.
                   </p>
                   <p>
-                    Our {EVENT_CONFIG.archive.ordinalLabel} edition was filled with practical
-                    sessions, hands-on workshops, and the honest hallway conversations that turn an
-                    event into a community.
+                    Talks went deep, the hands-on sessions ran on real code, and the hallway
+                    conversations kept going long after the last session.
                   </p>
                   <p>
-                    Thank you to every attendee, speaker, volunteer, and partner who shared their
-                    time, experience, and curiosity with us.
+                    Thank you to every attendee, speaker, and volunteer who shared their time,
+                    experience, and curiosity with us.
                   </p>
                 </>
               ) : (
                 <>
                   <p>
-                    Cloud Native Summit Munich brings together adopters and technologists from open
-                    source and cloud native ecosystems for two focused days in the heart of Bavaria.
+                    {EVENT_CONFIG.upcoming.name} is a new community event in Munich for the people
+                    who build AI systems: AI engineers, platform engineers, ML engineers, and the
+                    developers who wire it all together.
                   </p>
                   <p>
-                    CNS Munich is a local, community-organized event — the {edition.ordinalLabel}{' '}
-                    edition gathering practitioners, platform engineers, and cloud native
-                    enthusiasts to learn, share, and connect.
+                    The idea is simple. One day, no sales, just tech. Speakers show what they
+                    actually built, what broke, and what they would do differently. You leave with
+                    code, patterns, and people worth calling.
                   </p>
                   <p>
-                    This event provides a platform for professionals and experts from all levels and
-                    backgrounds to share knowledge about cloud-native technologies, platform
-                    engineering, and open source.
+                    {EVENT_CONFIG.upcoming.dateLabel} is our first edition. It is organized by
+                    volunteers from the Munich tech community and open to engineers at every level.
                   </p>
                 </>
               )}
@@ -100,7 +97,7 @@ export function About({ recap = false, tone = 'default' }: AboutProps) {
                   <Icon className="size-5 text-primary" />
                 </div>
                 <div className="flex flex-col justify-center">
-                  <p className="font-heading text-3xl font-bold leading-none text-primary">
+                  <p className="font-heading text-3xl font-semibold leading-none text-primary">
                     {value}
                   </p>
                   <p className="mt-1 text-sm font-medium text-muted-foreground">{label}</p>

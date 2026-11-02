@@ -17,75 +17,75 @@ export type GalleryImage = {
 const FALLBACK_IMAGES: GalleryImage[] = [
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/5398b1664f4844c1bc7b436738beafc0/revisions/b5d02cfae53546b7a2ffee3a5f9b04de/renditions/dffe31d0272c0a57534e4202051a10b1?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} conference moment`,
+    alt: `Munich community event, conference moment`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/41be6991facd4bde9f985989a07e3ead/revisions/dbfecdc8eafb4b9b9b291c74bf1b0544/renditions/962320c7b57172afa65cf0de66d1d355?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} audience`,
+    alt: `Munich community event, audience`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/f87db546251c44549227eba6cbeb396d/revisions/77e82dad0cf4403c8cc5112b1c1d8945/renditions/775d1b9a65d371b420265ffcf1302fdb?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} speaker on stage`,
+    alt: `Munich community event, speaker on stage`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/0f8ffd4c3d544dde8f3efc365177f434/revisions/4e55c9d4465548008ddcf43c14e779ef/renditions/59727dfec1b46114f117c4ce99c97057?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} networking`,
+    alt: `Munich community event, networking`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/73fdc8021776449db8e2364477640aec/revisions/a949fbe9c64042e797ec2d73c70f96a5/renditions/fd6e0c919e00b7b36ba7d9020e179fda?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} venue atmosphere`,
+    alt: `Munich community event, venue atmosphere`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/dcb7434536fe4637bcbf8aa5951d3ad0/revisions/c8fb724d62994dbaaebda4cc21142e0c/renditions/d4afbb9f2c292b83b9d983ccaa95771f?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} community`,
+    alt: `Munich community event, community`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/77bf66d76034471a9099a838f54e7d68/revisions/27dacc4f6eb84dea8809fa3ab25a7836/renditions/301dfc9470abf4f552cbee2b56487e56?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} session`,
+    alt: `Munich community event, session`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/6ee55dc8d6324881a16266d75a36c831/revisions/7108a45aa2c64078ac96c209f3b0160b/renditions/45703ae7a77845acc062c87477af8319?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} attendees`,
+    alt: `Munich community event, attendees`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/1e28f5abf00642858257917d687510ce/revisions/cfaa4b27f76e4f6196a31649303ec9d6/renditions/e334899cb2a49a1b646ad533a6f53d6e?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} event highlight`,
+    alt: `Munich community event, event highlight`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/5f2649211d194c658dc2f7ba14edd4e2/revisions/70d5d305588f4158a18788ed01a05ac5/renditions/9122b19098f3d7fbab5053a00807b592?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} summit moment`,
+    alt: `Munich community event, summit moment`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/a78de46023e84c9cbadb3294e0bad42d/revisions/66d7168bbb5647bab59f217c2c68c5cb/renditions/3f09d55b38399c39c645b348c798f484?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} event photo`,
+    alt: `Munich community event, event photo`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/c86d273b470842ba9566a9c3440b34d0/revisions/edb013bd5cfa4d07bf5f47b4f1f06662/renditions/631972049db56105500dc269aa8e3749?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} conference photo`,
+    alt: `Munich community event, conference photo`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/078bec8ec05045799ab4d98a1a27db14/revisions/68fa117b1f4f4a618d39c81baa074b74/renditions/496bee991f10aafa471e355f3a0e04db?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} workshop`,
+    alt: `Munich community event, workshop`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/316c532b96354098a93841fe032ee4dc/revisions/3be11522084d4d4f9154a6665b2c5229/renditions/bc88c15ed2e7cf5685f314400dcce2f0?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} hallway track`,
+    alt: `Munich community event, hallway track`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/3eec17d7b48943fdb28c2121d9f7d4df/revisions/7e92bfd3fe844d3a9f7d6035eb81c6d9/renditions/a733b83317fc224b3fb4c5e6c4f4c42e?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} crowd`,
+    alt: `Munich community event, crowd`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/6c765a04852e455f8f7fe082599b892e/revisions/dba8b8538afa4743ab989db09a3311ba/renditions/0d45ec22b106b1fdef4a6c1b66aec54d?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} stage moment`,
+    alt: `Munich community event, stage moment`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/a04d4e22b33a4839965abb0861704359/revisions/2afbf41972304542932619c5b8a89548/renditions/a446a85144d2c4ff75a369ae95f00c57?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} networking moment`,
+    alt: `Munich community event, networking moment`,
   },
   {
     src: 'https://photos.adobe.io/v2/spaces/7314e896be5b4c22b8365cfa07e42487/assets/b0c7ba18563d487e83cb99ce17a9b1e6/revisions/59a9ed16c93544d0affdcd1ed890897c/renditions/ca1a64c2a088241e3331d5c951cc12ee?api_key=LightroomMobileWeb1',
-    alt: `CNS Munich ${EVENT_CONFIG.archive.edition} community photo`,
+    alt: `Munich community event, community photo`,
   },
 ];
 
@@ -149,10 +149,10 @@ export async function fetchArchiveGalleryPool(): Promise<GalleryImage[]> {
       if (!href) continue;
 
       const fileName =
-        asset?.payload?.importSource?.fileName ?? `CNS Munich ${EVENT_CONFIG.archive.edition}`;
+        asset?.payload?.importSource?.fileName ?? `Munich community event`;
       images.push({
         src: `${base}${href}?api_key=${API_KEY}`,
-        alt: `${fileName.replace(/\.[^.]+$/, '').replace(/[_-]/g, ' ')} at CNS Munich ${EVENT_CONFIG.archive.edition}`,
+        alt: `${fileName.replace(/\.[^.]+$/, '').replace(/[_-]/g, ' ')} at a Munich community event`,
       });
     }
 

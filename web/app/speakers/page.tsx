@@ -23,7 +23,7 @@ export default function SpeakersPage() {
             {siteState.program.speakerTitleLead}
             {' '}
             <br />
-            <span className="text-[#0bbbef]">{siteState.program.speakerTitleAccent}</span>
+            <span className="text-on-dark-muted">{siteState.program.speakerTitleAccent}</span>
           </>
         }
         description={siteState.program.speakerDescription}

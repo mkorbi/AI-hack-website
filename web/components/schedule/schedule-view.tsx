@@ -307,23 +307,23 @@ export const ScheduleView = ({
   return (
     <div className={`schedule-container${isApp ? ' schedule-container--app' : ''}`}>
       {!isApp && (
-        <section className="hero-mesh px-4 py-12 text-white sm:px-6 sm:py-14 lg:px-8">
+        <section className="hero-mesh px-4 py-12 text-on-dark sm:px-6 sm:py-14 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <Eyebrow variant="light" className="mb-4">
               {presentation.scheduleEyebrow}
             </Eyebrow>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-2xl">
-                <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">
+                <h1 className="font-heading text-4xl font-semibold tracking-[-0.025em] sm:text-5xl">
                   {presentation.scheduleTitle}
                 </h1>
-                <p className="mt-3 text-base text-white/75 sm:text-lg">
+                <p className="mt-3 text-base text-on-dark/75 sm:text-lg">
                   {presentation.scheduleDescription}
                 </p>
               </div>
               <Link
                 href="/app/schedule"
-                className="inline-flex w-fit items-center rounded-full bg-white/10 px-5 py-2.5 text-sm font-semibold text-white ring-1 ring-white/20 transition-colors hover:bg-white/15"
+                className="inline-flex w-fit items-center rounded-full bg-on-dark/10 px-5 py-2.5 text-sm font-semibold text-on-dark ring-1 ring-on-dark/20 transition-colors hover:bg-on-dark/15"
               >
                 Open mobile schedule
               </Link>

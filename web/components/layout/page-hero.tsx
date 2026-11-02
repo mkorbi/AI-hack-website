@@ -1,3 +1,5 @@
+import { MUNICH_COORDINATES, Ruler } from "@/components/layout/calibrated";
+import { Eyebrow } from "@/components/layout/eyebrow";
 import { cn } from "@/lib/utils";
 
 type PageHeroProps = {
@@ -18,29 +20,29 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "hero-mesh relative w-full overflow-hidden text-white",
+        "hero-mesh relative w-full overflow-hidden text-on-dark",
         className
       )}
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.72_0.13_230/0.2),transparent_55%)]"
-      />
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+      <div className="relative mx-auto w-full max-w-7xl px-4 pb-10 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24">
         {eyebrow ? (
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#0bbbef]">
+          <Eyebrow variant="light" className="mb-5">
             {eyebrow}
-          </p>
+          </Eyebrow>
         ) : null}
-        <h1 className="max-w-3xl font-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+        <h1 className="max-w-3xl font-heading text-4xl font-semibold tracking-[-0.035em] sm:text-5xl lg:text-6xl lg:leading-[1.04]">
           {title}
         </h1>
         {description ? (
-          <p className="mt-4 max-w-2xl text-lg text-white/75 sm:text-xl">
+          <p className="mt-5 max-w-2xl text-lg text-on-dark-muted sm:text-xl">
             {description}
           </p>
         ) : null}
         {children ? <div className="mt-8">{children}</div> : null}
+        <div className="mt-14 text-on-dark/70">
+          <Ruler markers={[0]} />
+          <p className="annotation mt-4 text-steel">{MUNICH_COORDINATES}</p>
+        </div>
       </div>
     </section>
   );

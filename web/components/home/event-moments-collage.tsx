@@ -42,7 +42,7 @@ export function EventMomentsCollage({ pool }: EventMomentsCollageProps) {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
-              'relative shrink-0 cursor-pointer snap-center overflow-hidden rounded-2xl bg-muted shadow-lg ring-4 ring-white',
+              'relative shrink-0 cursor-pointer snap-center overflow-hidden rounded-2xl bg-muted shadow-lg ring-4 ring-on-dark',
               'h-52 w-40 sm:h-60 sm:w-48',
               index % 2 === 0 ? '-rotate-2' : 'rotate-2'
             )}
@@ -82,7 +82,7 @@ export function EventMomentsCollage({ pool }: EventMomentsCollageProps) {
               }}
             >
               <div
-                className="overflow-hidden rounded-2xl bg-white shadow-[0_20px_50px_-12px_rgba(0,66,88,0.25)] ring-4 ring-white transition-transform duration-300 hover:scale-[1.03]"
+                className="overflow-hidden rounded-2xl bg-paper shadow-[0_20px_50px_-12px_rgba(20,23,26,0.28)] ring-4 ring-on-dark transition-transform duration-300 hover:scale-[1.03]"
                 style={{ transform: `rotate(${placement.rotate}deg)` }}
               >
                 <div className="relative w-full bg-muted" style={{ aspectRatio: placement.aspect }}>

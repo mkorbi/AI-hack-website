@@ -30,7 +30,7 @@ export type ScheduleCardProps = {
 
 const typeStyles: Record<string, string> = {
   talk: 'bg-primary/10 text-primary',
-  workshop: 'bg-[#0bbbef]/15 text-primary',
+  workshop: 'bg-signal/25 text-graphite',
   keynote: 'bg-primary text-primary-foreground',
   sponsor: 'bg-muted text-muted-foreground',
   service: 'bg-muted text-muted-foreground',
@@ -59,7 +59,7 @@ export const ScheduleCard = ({
       className={cn(
         'group flex flex-col rounded-2xl bg-card p-5 ring-1 ring-border/70 transition-all hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-primary/35',
         isPast && 'opacity-60',
-        isLive && 'ring-2 ring-[#0bbbef]/50'
+        isLive && 'ring-2 ring-signal/50'
       )}
       onMouseEnter={onMouseEnter}
     >

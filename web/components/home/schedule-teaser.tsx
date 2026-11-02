@@ -155,10 +155,10 @@ export function ScheduleTeaser({ presentation, tone = 'default' }: ScheduleTease
       <Section id="schedule-teaser" className={cn(SECTION_TONE_CLASS[tone])}>
         <div className="mx-auto max-w-3xl text-center">
           <MotionReveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0bbbef]">
+            <p className="annotation text-signal-ink">
               {presentation.scheduleEyebrow}
             </p>
-            <h2 className="mt-4 font-heading text-3xl font-bold leading-[1.08] tracking-tight text-primary sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 font-heading text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-primary sm:text-4xl lg:text-5xl">
               {presentation.scheduleTitle}
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
@@ -183,11 +183,11 @@ export function ScheduleTeaser({ presentation, tone = 'default' }: ScheduleTease
     <Section id="schedule-teaser" className={cn(SECTION_TONE_CLASS[tone])}>
       <div className="mx-auto max-w-3xl text-center">
         <MotionReveal>
-          <h2 className="font-heading text-3xl font-bold leading-[1.08] tracking-tight text-primary sm:text-4xl lg:text-5xl">
+          <h2 className="font-heading text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-primary sm:text-4xl lg:text-5xl">
             {presentation.isArchive ? 'The sessions live on,' : 'Replay past sessions,'}
             {' '}
             <br />
-            <span className="text-[#0bbbef]">
+            <span className="text-signal-ink">
               {presentation.isArchive ? 'wherever you are' : 'on your schedule'}
             </span>
           </h2>
@@ -248,14 +248,14 @@ export function ScheduleTeaser({ presentation, tone = 'default' }: ScheduleTease
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <span className="flex size-9 items-center justify-center rounded-full bg-white/90 text-primary shadow-sm">
+                  <span className="flex size-9 items-center justify-center rounded-full bg-on-dark/90 text-primary shadow-sm">
                     <Play className="size-4 fill-current" />
                   </span>
                 </div>
                 {isActive ? (
                   <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3">
-                    <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-white ring-1 ring-white/20 sm:text-xs">
-                      <span className="size-1.5 rounded-full bg-[#0bbbef]" />
+                    <span className="inline-flex items-center gap-1 rounded-full bg-on-dark/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-on-dark ring-1 ring-on-dark/20 sm:text-xs">
+                      <span className="size-1.5 rounded-full bg-signal" />
                       Playing
                     </span>
                   </div>

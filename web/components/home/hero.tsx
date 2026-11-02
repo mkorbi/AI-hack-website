@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -11,6 +12,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 
+import { MUNICH_COORDINATES, Ruler, SignalDot } from '@/components/layout/calibrated';
 import { Eyebrow } from '@/components/layout/eyebrow';
 import { MotionReveal } from '@/components/layout/motion-reveal';
 import { Button } from '@/components/ui/button';
@@ -30,10 +32,12 @@ const ACTION_ICONS: Record<ActionIcon, LucideIcon> = {
 };
 
 const stats = [
-  { icon: Calendar, label: '2 days' },
-  { icon: MapPin, label: EVENT_CONFIG.upcoming.location },
+  { icon: Calendar, label: EVENT_CONFIG.upcoming.dateLabel },
+  { icon: MapPin, label: EVENT_CONFIG.upcoming.venue },
   { icon: Users, label: 'Community-driven' },
 ];
+
+const RULER_MARKERS = [0, 34, 67];
 
 function ActionLink({ action }: { action: SiteAction }) {
   if (action.external) {
@@ -54,71 +58,50 @@ export function Hero({ presentation }: HeroProps) {
     : null;
 
   return (
-    <section className="relative min-h-screen overflow-hidden text-white">
+    <section className="relative min-h-screen overflow-hidden bg-graphite text-on-dark">
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <video
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/videos/hero-poster.jpg"
-          controls={false}
-          disablePictureInPicture
-        >
-          <source src="/videos/hero-video.webm" type="video/webm" />
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-linear-to-b from-primary/88 via-primary/72 to-primary/94" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_35%,transparent_0%,oklch(0.18_0.045_220/0.52)_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-primary/35 to-transparent" />
+<Image
+          src="/videos/hero-poster.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="pointer-events-none object-cover opacity-60 grayscale contrast-110"
+        />
+        <div className="absolute inset-0 bg-linear-to-r from-graphite via-graphite/85 to-graphite/45" />
+        <div className="absolute inset-x-0 bottom-0 h-64 bg-linear-to-t from-graphite to-transparent" />
+        <div className="tech-grid absolute inset-0" />
       </div>
 
-      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-4 pb-24 pt-28 sm:px-6 lg:px-8">
+      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-end px-4 pb-10 pt-32 sm:px-6 lg:px-8">
         <div className="max-w-5xl">
           <MotionReveal>
-            <Eyebrow variant="light" className="mb-6">
+            <Eyebrow variant="light" className="mb-8">
               {presentation.eyebrow}
             </Eyebrow>
           </MotionReveal>
 
           <MotionReveal delay={0.08}>
-            <h1 className="text-balance font-heading text-4xl font-bold leading-[1.02] tracking-tight drop-shadow-sm sm:text-5xl md:text-6xl lg:text-8xl">
+            <h1 className="text-balance font-heading text-5xl font-semibold leading-[0.98] tracking-[-0.045em] sm:text-6xl md:text-7xl lg:text-[7.5rem]">
               {presentation.titleLead}
               {' '}
               <br />
-              <span className="text-[#0bbbef]">{presentation.titleAccent}</span>
+              <span className="text-on-dark-muted">{presentation.titleAccent}</span>
+              <SignalDot />
             </h1>
           </MotionReveal>
 
           <MotionReveal delay={0.16}>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85 drop-shadow-sm sm:text-xl">
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-on-dark-muted sm:text-xl">
               {presentation.description}
             </p>
           </MotionReveal>
-
-          {presentation.showStats ? (
-            <MotionReveal delay={0.22}>
-              <div className="mt-8 flex flex-wrap gap-3">
-                {stats.map(({ icon: Icon, label }) => (
-                  <span
-                    key={label}
-                    className="inline-flex items-center gap-2 rounded-full bg-black/25 px-4 py-2 text-sm font-medium text-white/95 ring-1 ring-white/15 backdrop-blur-md"
-                  >
-                    <Icon className="size-4 text-[#0bbbef]" />
-                    {label}
-                  </span>
-                ))}
-              </div>
-            </MotionReveal>
-          ) : null}
 
           <MotionReveal delay={0.28}>
             <div className="mt-10 flex flex-wrap gap-3">
               <Button
                 size="lg"
-                className="h-12 bg-[#0bbbef] px-8 text-base font-semibold text-primary hover:bg-[#35c8f2]"
+                className="h-12 rounded-md bg-signal px-7 text-base font-semibold text-graphite hover:bg-signal-hover"
                 nativeButton={false}
                 render={<ActionLink action={presentation.primaryAction} />}
               >
@@ -132,8 +115,8 @@ export function Hero({ presentation }: HeroProps) {
                   variant={presentation.secondaryAction.prominent ? 'default' : 'outline'}
                   className={
                     presentation.secondaryAction.prominent
-                      ? 'h-12 bg-[#0bbbef] px-8 text-base font-semibold text-primary hover:bg-[#35c8f2]'
-                      : 'h-12 border-white/30 bg-black/20 px-8 text-base text-white backdrop-blur-sm hover:bg-black/30 hover:text-white'
+                      ? 'h-12 rounded-md bg-signal px-7 text-base font-semibold text-graphite hover:bg-signal-hover'
+                      : 'h-12 rounded-md border-on-dark/35 bg-transparent px-7 text-base text-on-dark hover:border-on-dark hover:bg-on-dark/5 hover:text-on-dark'
                   }
                   nativeButton={false}
                   render={<ActionLink action={presentation.secondaryAction} />}
@@ -145,6 +128,39 @@ export function Hero({ presentation }: HeroProps) {
             </div>
           </MotionReveal>
         </div>
+
+        <MotionReveal delay={0.34} className="mt-20">
+          <div className="text-on-dark/80">
+            <Ruler markers={presentation.showStats ? RULER_MARKERS : [0]} />
+          </div>
+          {presentation.showStats ? (
+            <ul className="relative mt-5 hidden h-5 sm:block">
+              {stats.map(({ label }, index) => (
+                <li
+                  key={label}
+                  className="annotation absolute top-0 text-on-dark"
+                  style={{ left: `${RULER_MARKERS[index]}%` }}
+                >
+                  {label}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          {presentation.showStats ? (
+            <ul className="mt-5 flex flex-col gap-2 sm:hidden">
+              {stats.map(({ icon: Icon, label }) => (
+                <li key={label} className="annotation flex items-center gap-2 text-on-dark">
+                  <Icon className="size-3.5 text-signal" aria-hidden="true" />
+                  {label}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          <div className="annotation mt-6 flex flex-wrap justify-between gap-x-6 gap-y-1 text-steel">
+            <span>{MUNICH_COORDINATES}</span>
+            <span>{EVENT_CONFIG.upcoming.location}</span>
+          </div>
+        </MotionReveal>
       </div>
     </section>
   );

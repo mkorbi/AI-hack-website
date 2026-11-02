@@ -8,6 +8,7 @@ import { ScheduleTeaser } from '@/components/home/schedule-teaser';
 import { SpeakersTeaser } from '@/components/home/speakers-teaser';
 import { Sponsors } from '@/components/home/sponsors';
 import { Ticketing } from '@/components/home/ticketing';
+import { Topics } from '@/components/home/topics';
 import { Venue } from '@/components/home/venue';
 import { SiteLayout } from '@/components/layout/site-layout';
 import { EVENT_CONFIG } from '@/lib/event-config';
@@ -31,6 +32,8 @@ function renderHomepageSection(section: HomepageSectionId, tone: SectionTone) {
       return <EventMoments key={section} tone={tone} />;
     case 'expect':
       return <Expect key={section} tone={tone} />;
+    case 'topics':
+      return <Topics key={section} tone={tone} />;
     case 'ticketing':
       return <Ticketing key={section} phase={siteState.ticketing.mode} tone={tone} />;
     case 'speakers':

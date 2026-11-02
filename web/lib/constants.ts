@@ -128,34 +128,15 @@ export const LINKS = {
   },
 } as const satisfies Record<string, LinkItem>;
 
-const PHOTO_GALLERY: MenuItem = {
-  text: 'Photo Gallery',
-  to: '',
-  children: [
-    { text: String(EVENT_CONFIG.archive.edition), ...LINKS.galleryArchive },
-    { text: '2025', ...LINKS.gallery2025 },
-    { text: '2024', ...LINKS.gallery2024 },
-  ],
-};
-
-const VIDEO_PLAYLISTS: MenuItem = {
-  text: 'Video Playlists',
-  to: '',
-  children: [
-    { text: '2026', ...LINKS.playlist2026 },
-    { text: '2025', ...LINKS.playlist2025 },
-    { text: '2024', ...LINKS.playlist2024 },
-  ],
-};
+const SECTION_MENU: MenuItem[] = [
+  { text: 'About', to: '/#about' },
+  { text: 'Format', to: '/#format' },
+  { text: 'Topics', to: '/#topics' },
+  { text: 'Community', to: '/#community' },
+];
 
 export const MENUS: Record<'header' | 'footer' | 'mobile', MenuItem[]> = {
-  header: [
-    { text: 'Schedule', ...LINKS.schedule },
-    { text: 'Speakers', ...LINKS.speakers },
-    { text: 'Sponsors', ...LINKS.sponsors },
-    PHOTO_GALLERY,
-    VIDEO_PLAYLISTS,
-  ],
+  header: SECTION_MENU,
   footer: [
     { text: 'Code of Conduct', ...LINKS.conduct },
     { text: 'Team', ...LINKS.team },
@@ -163,11 +144,5 @@ export const MENUS: Record<'header' | 'footer' | 'mobile', MenuItem[]> = {
     { text: 'Imprint', ...LINKS.privacy },
     { text: 'Privacy Policy', ...LINKS.privacyPolicy },
   ],
-  mobile: [
-    { text: 'Schedule', ...LINKS.schedule },
-    { text: 'Speakers', ...LINKS.speakers },
-    { text: 'Sponsors', ...LINKS.sponsors },
-    PHOTO_GALLERY,
-    VIDEO_PLAYLISTS,
-  ],
+  mobile: SECTION_MENU,
 };

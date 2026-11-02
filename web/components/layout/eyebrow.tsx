@@ -6,6 +6,10 @@ type EyebrowProps = {
   variant?: "light" | "dark";
 };
 
+/**
+ * Calibrated annotation label: mono, uppercase, led by a short signal tick.
+ * `light` is for graphite backgrounds, `dark` for fog backgrounds.
+ */
 export function Eyebrow({
   children,
   className,
@@ -14,13 +18,12 @@ export function Eyebrow({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.14em]",
-        variant === "light"
-          ? "bg-white/10 text-white ring-1 ring-white/20"
-          : "bg-primary/8 text-primary ring-1 ring-primary/15",
+        "annotation inline-flex items-center gap-2.5",
+        variant === "light" ? "text-signal" : "text-signal-ink",
         className
       )}
     >
+      <span aria-hidden className="h-[2px] w-5 shrink-0 bg-signal" />
       {children}
     </span>
   );

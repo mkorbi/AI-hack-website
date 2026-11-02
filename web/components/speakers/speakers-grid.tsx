@@ -58,7 +58,7 @@ export function SpeakersGrid({ presentation }: { presentation: SitePresentation[
             ? 'Loading speakers from the lineup…'
             : mode === 'preview'
               ? `${speakerData.length} early-announced speakers — more names coming soon.`
-              : `${speakerData.length} practitioners sharing knowledge across cloud native, platform engineering, and open source.`}
+              : `${speakerData.length} practitioners sharing what they built across AI engineering and AI platforms.`}
         </p>
       </MotionReveal>
 

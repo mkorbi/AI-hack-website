@@ -15,7 +15,7 @@ export function SocialIcon({
   url: string;
   isWhite?: boolean;
 }) {
-  const className = cn("size-4", isWhite ? "text-white" : "text-primary");
+  const className = cn("size-4", isWhite ? "text-on-dark" : "text-primary");
 
   if (url.includes("github.com")) {
     return (
@@ -67,7 +67,7 @@ export function SpeakerCardSkeleton({
 }) {
   if (variant === "wall") {
     return (
-      <div className="overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-primary/10">
+      <div className="overflow-hidden rounded-2xl bg-paper shadow-md ring-1 ring-primary/10">
         <div className="aspect-square animate-pulse bg-primary/10" />
       </div>
     );
@@ -75,7 +75,7 @@ export function SpeakerCardSkeleton({
 
   if (compact) {
     return (
-      <div className="overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-primary/10">
+      <div className="overflow-hidden rounded-2xl bg-paper shadow-md ring-1 ring-primary/10">
         <div className="aspect-square animate-pulse bg-primary/10" />
         <div className="space-y-3 p-4">
           <div className="mx-auto h-4 w-3/4 animate-pulse rounded bg-primary/10" />
@@ -130,10 +130,10 @@ export function AnnouncedSpeakerCard({
         <div className="absolute inset-x-0 bottom-0 p-4">
           <div className="flex items-end justify-between gap-3">
             <div className="min-w-0">
-              <h3 className="truncate font-heading text-lg font-bold leading-tight text-white">
+              <h3 className="truncate font-heading text-lg font-semibold leading-tight text-on-dark">
                 {speaker.fullName}
               </h3>
-              <p className="mt-0.5 truncate text-sm font-medium text-white/80">
+              <p className="mt-0.5 truncate text-sm font-medium text-on-dark/80">
                 {company}
               </p>
             </div>
@@ -143,7 +143,7 @@ export function AnnouncedSpeakerCard({
       <div className="flex flex-1 flex-col p-4 sm:p-5">
         {hasSession ? (
           <>
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary/70">
+            <p className="annotation text-primary/70">
               Session
             </p>
             <p className="mt-1.5 line-clamp-2 text-sm font-medium leading-snug text-foreground">
@@ -164,7 +164,7 @@ export function AnnouncedSpeakerCard({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={getSocialLinkLabel(link.url, speaker.fullName)}
-              className="rounded-full bg-primary/70 p-2 text-white backdrop-blur-sm transition-colors hover:bg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0bbbef]"
+              className="rounded-full bg-primary/70 p-2 text-on-dark backdrop-blur-sm transition-colors hover:bg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
             >
               <SocialIcon url={link.url} isWhite />
             </a>
@@ -197,7 +197,7 @@ export function LineupSpeakerCard({
         <Link
           href={href}
           onMouseEnter={onMouseEnter}
-          className="relative block size-full overflow-hidden rounded-2xl bg-white text-left shadow-md ring-1 ring-primary/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+          className="relative block size-full overflow-hidden rounded-2xl bg-paper text-left shadow-md ring-1 ring-primary/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
         >
           <Image
             src={speaker.profilePicture}
@@ -209,10 +209,10 @@ export function LineupSpeakerCard({
           <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
           <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4">
             <div className="min-w-0 pr-14">
-              <h3 className="truncate font-heading text-sm font-bold leading-tight text-white sm:text-base">
+              <h3 className="truncate font-heading text-sm font-semibold leading-tight text-on-dark sm:text-base">
                 {speaker.fullName}
               </h3>
-              <p className="mt-0.5 truncate text-xs font-medium text-[#0bbbef] sm:text-sm">
+              <p className="mt-0.5 truncate text-xs font-medium text-signal sm:text-sm">
                 {company}
               </p>
             </div>
@@ -227,7 +227,7 @@ export function LineupSpeakerCard({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={getSocialLinkLabel(link.url, speaker.fullName)}
-                className="rounded-full bg-white/20 p-1.5 text-white backdrop-blur-sm transition-colors hover:bg-white/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0bbbef]"
+                className="rounded-full bg-on-dark/20 p-1.5 text-on-dark backdrop-blur-sm transition-colors hover:bg-on-dark/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
               >
                 <SocialIcon url={link.url} isWhite />
               </a>
@@ -243,7 +243,7 @@ export function LineupSpeakerCard({
       <Link
         href={href}
         onMouseEnter={onMouseEnter}
-        className="flex h-full w-full flex-col overflow-hidden rounded-2xl bg-white text-left shadow-md ring-1 ring-primary/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+        className="flex h-full w-full flex-col overflow-hidden rounded-2xl bg-paper text-left shadow-md ring-1 ring-primary/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
       >
       <div className="relative aspect-square overflow-hidden">
         <Image
@@ -287,7 +287,7 @@ export function LineupSpeakerCard({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={getSocialLinkLabel(link.url, speaker.fullName)}
-              className="rounded-full bg-primary/70 p-2 text-white backdrop-blur-sm transition-colors hover:bg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0bbbef]"
+              className="rounded-full bg-primary/70 p-2 text-on-dark backdrop-blur-sm transition-colors hover:bg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
             >
               <SocialIcon url={link.url} isWhite />
             </a>

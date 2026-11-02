@@ -117,18 +117,18 @@ export function Ticketing({ phase, tone = 'default' }: TicketingProps) {
     <Section id="tickets" className={cn('scroll-mt-24', SECTION_TONE_CLASS[tone])}>
       <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
         <MotionReveal>
-          <h2 className="font-heading text-3xl font-bold leading-[1.08] tracking-tight text-primary sm:text-4xl lg:text-5xl">
-            {phase === 'sold-out' ? 'CNS Munich is' : 'Secure'}
+          <h2 className="font-heading text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-primary sm:text-4xl lg:text-5xl">
+            {phase === 'sold-out' ? 'AI Hack Fest is' : 'Secure'}
             {' '}
             <br />
-            <span className="text-[#0bbbef]">
+            <span className="text-signal-ink">
               {phase === 'sold-out' ? 'sold out' : 'your spot'}
             </span>
           </h2>
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted-foreground">
             {phase === 'sold-out'
               ? 'All available tickets have found a home. Thank you for the incredible response from the community.'
-              : 'Two full days in Munich — talks, workshops, and the people building cloud native in Europe.'}
+              : 'One day in Munich: deep technical talks, hands-on sessions, and the people building AI systems in Europe.'}
           </p>
           {phase === 'open' ? (
             <p className="mt-8 text-sm text-muted-foreground">
@@ -148,7 +148,7 @@ export function Ticketing({ phase, tone = 'default' }: TicketingProps) {
           <Card className="gap-0 rounded-2xl bg-gradient-to-br from-primary/8 to-primary/[0.03] p-6 shadow-none ring-1 ring-primary/10 sm:p-8">
             <CardContent className="space-y-6 px-0">
               <div>
-                <h3 className="font-heading text-xl font-bold tracking-tight text-primary sm:text-2xl">
+                <h3 className="font-heading text-xl font-semibold tracking-[-0.025em] text-primary sm:text-2xl">
                   {eventData.title}
                 </h3>
                 <div className="mt-4 flex flex-col gap-2 text-sm text-muted-foreground">
@@ -215,7 +215,7 @@ export function Ticketing({ phase, tone = 'default' }: TicketingProps) {
                       className="grid gap-4 py-6 last:pb-0 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-6"
                     >
                       <div className="min-w-0 break-words">
-                        <h4 className="font-heading text-lg font-bold text-primary">
+                        <h4 className="font-heading text-lg font-semibold text-primary">
                           {ticket.title}
                         </h4>
                         {ticket.description && (
@@ -230,7 +230,7 @@ export function Ticketing({ phase, tone = 'default' }: TicketingProps) {
                         )}
                       </div>
                       <div className="sm:text-right">
-                        <p className="whitespace-nowrap font-heading text-2xl font-bold tracking-tight text-primary tabular-nums">
+                        <p className="whitespace-nowrap font-heading text-2xl font-semibold tracking-[-0.025em] text-primary tabular-nums">
                           {formatCurrency(toNetPrice(ticket.price), ticket.currency)}
                         </p>
                         <p className="mt-1 text-xs text-muted-foreground">Net + 19% VAT</p>

@@ -15,7 +15,6 @@ import {
 } from '@/components/ui/navigation-menu';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { DISCORD_URL, MENUS, type MenuItem } from '@/lib/constants';
-import { EVENT_CONFIG } from '@/lib/event-config';
 import type { SitePresentation } from '@/lib/site-presentation';
 import { cn } from '@/lib/utils';
 
@@ -58,14 +57,14 @@ function DesktopNav({
   navigation: SitePresentation['navigation'];
 }) {
   const linkClass = cn(
-    'cursor-pointer text-[15px] font-semibold transition-colors',
-    lightText ? 'text-white/90 hover:text-[#0bbbef]' : 'text-primary hover:text-primary/70'
+    'cursor-pointer text-[15px] font-medium transition-colors',
+    lightText ? 'text-on-dark hover:text-signal' : 'text-primary hover:text-primary/70'
   );
   const shellClass = (activeLightText: boolean) =>
     cn(
       'rounded-lg !bg-transparent px-2.5 py-1.5 focus:!bg-transparent',
       activeLightText
-        ? 'text-white/90 hover:!bg-white/10 hover:text-[#0bbbef] focus-visible:ring-white/25 data-open:text-[#0bbbef]'
+        ? 'text-on-dark hover:!bg-on-dark/10 hover:text-signal focus-visible:ring-on-dark/25 data-open:text-signal'
         : 'text-primary hover:!bg-primary/5 hover:text-primary/70 focus-visible:ring-primary/25 data-active:font-bold'
     );
 
@@ -77,7 +76,7 @@ function DesktopNav({
             {item.children ? (
               <>
                 <NavigationMenuTrigger
-                  className={cn(shellClass(lightText), 'text-[15px] font-semibold')}
+                  className={cn(shellClass(lightText), 'text-[15px] font-medium')}
                 >
                   {getMenuLabel(item, navigation)}
                 </NavigationMenuTrigger>
@@ -118,14 +117,12 @@ function MobileNav({
   navigation,
   open,
   onOpenChange,
-  sponsorship,
   ticketing,
 }: {
   lightText: boolean;
   navigation: SitePresentation['navigation'];
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  sponsorship: SitePresentation['sponsorship'];
   ticketing: SitePresentation['ticketing'];
 }) {
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
@@ -139,7 +136,7 @@ function MobileNav({
             size="icon"
             className={cn(
               'lg:hidden',
-              lightText && 'text-white hover:bg-white/10 hover:text-white'
+              lightText && 'text-on-dark hover:bg-on-dark/10 hover:text-on-dark'
             )}
             aria-label="Open menu"
           />
@@ -230,24 +227,13 @@ function MobileNav({
             {navigation.showCfp ? (
               <Button
                 size="lg"
-                className="h-12 w-full bg-[#0bbbef] text-base font-semibold text-primary hover:bg-[#35c8f2]"
+                className="h-12 w-full bg-signal text-base font-semibold text-graphite hover:bg-signal-hover"
                 nativeButton={false}
                 render={<Link href="/#call-for-proposals" />}
                 onClick={() => onOpenChange(false)}
               >
                 <Mic className="size-4" />
                 Submit a talk
-              </Button>
-            ) : null}
-            {sponsorship.isRecruiting ? (
-              <Button
-                size="lg"
-                className="h-12 w-full bg-[#0bbbef] text-base font-semibold text-primary hover:bg-[#35c8f2]"
-                nativeButton={false}
-                render={<Link href="/#sponsors" />}
-                onClick={() => onOpenChange(false)}
-              >
-                Become a {EVENT_CONFIG.sponsorship.edition} sponsor
               </Button>
             ) : null}
             <Button
@@ -272,7 +258,6 @@ function MobileNav({
 export function SiteHeader({
   homepage = false,
   navigation,
-  sponsorship,
   ticketing,
 }: SiteHeaderProps) {
   const headerRef = useRef<HTMLElement>(null);
@@ -308,8 +293,8 @@ export function SiteHeader({
     };
   }, [homepage, scrolled, mobileOpen]);
 
-  const onHero = homepage && !scrolled;
-  const lightText = onHero;
+  // The header is always a graphite bar so the AI Hack Fest logo sits on its native background.
+  const lightText = true;
 
   return (
     <header
@@ -321,15 +306,15 @@ export function SiteHeader({
           ? cn(
               'fixed inset-x-0 top-0',
               scrolled
-                ? 'border-b border-border/50 bg-background/90 shadow-sm backdrop-blur-xl'
-                : 'bg-linear-to-b from-black/50 via-black/20 to-transparent backdrop-blur-[2px]'
+                ? 'border-b border-on-dark/10 bg-graphite/95 backdrop-blur-xl'
+                : 'bg-linear-to-b from-graphite/80 via-graphite/30 to-transparent'
             )
-          : 'sticky top-0 border-b border-border/50 bg-background/90 shadow-sm backdrop-blur-xl'
+          : 'sticky top-0 border-b border-on-dark/10 bg-graphite'
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 lg:px-8">
         <Link href="/" className="relative z-50 shrink-0 cursor-pointer">
-          <SiteLogo variant={onHero ? 'hero' : 'legacy'} priority />
+          <SiteLogo variant="hero" priority />
         </Link>
 
         <DesktopNav lightText={lightText} navigation={navigation} />
@@ -338,11 +323,11 @@ export function SiteHeader({
           {ticketing.mode === 'open' ? (
             <Button
               size="sm"
-              variant={onHero ? 'outline' : 'default'}
+              variant="outline"
               className={cn(
                 'hidden font-semibold sm:inline-flex',
-                onHero
-                  ? 'border-white/80 bg-transparent text-white hover:bg-white/10 hover:text-white'
+                lightText
+                  ? 'border-on-dark/60 bg-transparent text-on-dark hover:bg-on-dark/10 hover:text-on-dark'
                   : 'bg-primary text-primary-foreground hover:bg-primary/90'
               )}
               nativeButton={false}
@@ -355,11 +340,11 @@ export function SiteHeader({
           {ticketing.mode === 'sold-out' ? (
             <Button
               size="sm"
-              variant={onHero ? 'outline' : 'default'}
+              variant="outline"
               className={cn(
                 'hidden font-semibold sm:inline-flex',
-                onHero
-                  ? 'border-white/50 bg-transparent text-white'
+                lightText
+                  ? 'border-on-dark/40 bg-transparent text-on-dark'
                   : 'bg-primary text-primary-foreground'
               )}
               disabled
@@ -370,27 +355,12 @@ export function SiteHeader({
           {navigation.showCfp ? (
             <Button
               size="sm"
-              className="hidden bg-[#0bbbef] font-semibold text-primary hover:bg-[#35c8f2] sm:inline-flex"
+              className="hidden bg-signal font-semibold text-graphite hover:bg-signal-hover sm:inline-flex"
               nativeButton={false}
               render={<Link href="/#call-for-proposals" />}
             >
               <Mic className="size-4" />
               CFP
-            </Button>
-          ) : null}
-          {sponsorship.isRecruiting ? (
-            <Button
-              size="sm"
-              className={cn(
-                'hidden font-semibold sm:inline-flex',
-                onHero
-                  ? 'bg-[#0bbbef] text-primary hover:bg-[#35c8f2]'
-                  : 'bg-primary text-primary-foreground hover:bg-primary/90'
-              )}
-              nativeButton={false}
-              render={<Link href="/#sponsors" />}
-            >
-              Sponsor
             </Button>
           ) : null}
           <Button
@@ -399,7 +369,7 @@ export function SiteHeader({
             className={cn(
               'hidden lg:inline-flex',
               lightText
-                ? 'text-white/90 hover:bg-white/10 hover:text-white'
+                ? 'text-on-dark hover:bg-on-dark/10 hover:text-on-dark'
                 : 'text-primary hover:bg-primary/5'
             )}
             onClick={() => window.open(DISCORD_URL, '_blank', 'noopener,noreferrer')}
@@ -412,7 +382,6 @@ export function SiteHeader({
             navigation={navigation}
             open={mobileOpen}
             onOpenChange={setMobileOpen}
-            sponsorship={sponsorship}
             ticketing={ticketing}
           />
         </div>

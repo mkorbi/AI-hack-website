@@ -43,7 +43,7 @@ export function SectionTitle({
   return (
     <Component
       className={cn(
-        "mb-8 font-heading text-3xl font-bold tracking-tight text-primary md:mb-10 md:text-4xl",
+        "mb-8 font-heading text-3xl font-semibold tracking-[-0.025em] text-primary md:mb-10 md:text-4xl",
         className
       )}
     >

@@ -3,32 +3,26 @@ title: Our vision
 slug: vision
 ---
 
-## Cloud Native Summit Munich
+## AI Hack Fest
 
-CNS Munich is a community-driven event that aims to bring together cloud native enthusiasts from around the region to learn, share knowledge, and network with each other. We strive to create a welcoming and inclusive environment for attendees of all experience levels, from beginners to experts. Our goal is to promote the adoption of cloud-native technologies and to provide a platform for community members to share their experiences and best practices. We believe in the power of collaboration and community to drive innovation and the future of cloud computing.
+AI Hack Fest is a community-driven day in Munich for the engineers who build AI systems and the platforms they run on. AI engineers, platform engineers, ML engineers, and developers who wire models into real products: this is your room.
 
-Additionally, we are committed to being a carbon-neutral event and will work to offset any carbon emissions associated with the event through environmentally conscious initiatives. In line with our commitment to sustainability, we will only serve vegetarian and vegan food options at the event. Furthermore, we are committed to reducing waste as much as possible at the event and will encourage the use of reusable containers and other eco-friendly practices. Above all, we embrace diversity and inclusivity and welcome attendees from all backgrounds and identities to join us at CNS Munich.
+Our promise fits on a badge: **no sales, just tech.** Sessions are chosen for technical depth. Speakers show what they actually built, what broke, and what they would do differently. Product pitches and vendor demos do not make the cut.
 
-## Old wine in new bottles
+## Why another AI event?
 
-What's the difference between KCD Munich and CNS Munich? Nothing. Same organizing team, same community, same location. But ...
+There is no shortage of AI conferences. Most of them are built around announcements, booths, and keynotes. What is hard to find is a day where engineers talk to engineers about evals, inference platforms, agents in production, retrieval pipelines, open models, and what it costs to run all of it.
 
-We have organized the KCD Munich now 3 years in a row and have grown in a healthy, dynamic way to an event with over 420 participants. And we are not alone; KCDs all around the globe become major successes. This very drastic growth in the last years requires some guiding frames, which were implemented in the last year by the Cloud Native Computing Foundation (CNCF). However, those frames are no help for outgrown events like ours.
+That is the day we want to spend, so we are building it.
 
-Therefore, we decided not to apply for the KCD program and stay independent but united with all other European KCDs, now also known as Cloud Native Days, who take a similar approach. We strongly believe that the unclaimed resources of us can be used by fresh new KCDs somewhere around the globe better; so, go and make it work in your country too!
+## How the day works
 
-### More than Kubernetes - a Cloud Native Summit
+One day, two tracks. One track is for deep technical talks. The second track is for hands-on sessions at the keyboard, or a second talk track, depending on the proposals we receive. Bring your laptop and your questions.
 
-The decision to not take part in the KCD 2.0 program has come a long way, with dozens of discussions, meetings, and reflections. We came to the conclusion that the community itself gives the success of the event, the speakers, the sponsors, and the magic in between all of it. We aim to bring together the best, most curious, deepest tech, and craziest innovative mindset people - a summit. Our vision is to encourage and support the open-source community, build on the cloud-native ecosystem, and foster collaboration between all parties.
+## Built by the community
 
-### Double down on the community
+AI Hack Fest is organized by volunteers from the Munich tech community. We welcome engineers of every background, identity, and level of experience, and we expect everyone to follow our [Code of Conduct](https://github.com/KCDMunich/code-of-conduct/blob/main/code-of-conduct.md).
 
-We would like to use this change to put ourselves on a solid base for the future. Therefore, we have decided to found a non-profit organization called "Förderverein Open Source, Cloud Native und Künstliche Intelligenz Bayern e.V." to host any future Cloud Native Summits starting with the 2025 edition.
+## First edition
 
-### Onward and Upward
-
-Follow us on [LinkedIn](https://linkedin.com/company/cns-munich), [X/Twitter](https://x.com/cnsmunich), or Instagram to stay up to date.
-
-If you are interested in sponsoring you will find all the [sponsorship details](https://cloudnativesummit.de/#sponsors).
-
-Feel free to contact us with any questions. We look forward to welcoming the community back to Munich on June 14–15, 2027!
+The first AI Hack Fest takes place in Munich in February 2027. Join the community to hear first about the call for proposals, tickets, and the venue.

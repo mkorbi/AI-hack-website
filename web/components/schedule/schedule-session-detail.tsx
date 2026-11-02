@@ -60,7 +60,7 @@ function SessionSpeakerProfile({ speaker }: { speaker: Speaker }) {
   const speakerHref = getSpeakerPath(speaker);
 
   return (
-    <section className="overflow-hidden rounded-3xl border border-border/70 bg-card">
+    <section className="overflow-hidden rounded-2xl border border-border/70 bg-card">
       <div className="border-b border-border/60 bg-muted/25 px-6 py-8 sm:px-8 sm:py-10">
         <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-center">
           <Link
@@ -84,10 +84,10 @@ function SessionSpeakerProfile({ speaker }: { speaker: Speaker }) {
           </Link>
 
           <div className="min-w-0 text-center sm:text-left">
-            <h2 className="font-heading text-3xl font-bold leading-tight text-primary sm:text-4xl">
+            <h2 className="font-heading text-3xl font-semibold leading-tight text-primary sm:text-4xl">
               <Link
                 href={speakerHref}
-                className="transition-colors hover:text-[#0bbbef]"
+                className="transition-colors hover:text-signal-ink"
               >
                 {speaker.fullName}
               </Link>
@@ -96,7 +96,7 @@ function SessionSpeakerProfile({ speaker }: { speaker: Speaker }) {
               <p className="mt-3 text-lg leading-snug text-foreground">{tagline}</p>
             ) : null}
             {company ? (
-              <p className="mt-2 text-base font-semibold text-[#0bbbef]">{company}</p>
+              <p className="mt-2 text-base font-semibold text-signal-ink">{company}</p>
             ) : null}
           </div>
         </div>
@@ -104,7 +104,7 @@ function SessionSpeakerProfile({ speaker }: { speaker: Speaker }) {
 
       {speaker.bio ? (
         <div className="px-6 py-8 sm:px-8">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-[#0bbbef]">
+          <p className="mb-4 annotation text-signal-ink">
             The speaker
           </p>
           <p className="max-w-2xl whitespace-pre-line text-base leading-7 text-muted-foreground">
@@ -185,11 +185,11 @@ export function ScheduleSessionDetail({
 
   return (
     <div className="min-h-screen bg-background">
-      <section className="hero-mesh border-b border-white/10 px-4 py-8 text-white sm:px-6 lg:px-8">
+      <section className="hero-mesh border-b border-on-dark/10 px-4 py-8 text-on-dark sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <Link
             href={backHref}
-            className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-white/80 transition-colors hover:text-white"
+            className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-on-dark/80 transition-colors hover:text-on-dark"
           >
             <ArrowLeft className="size-4" />
             Back to schedule
@@ -197,23 +197,23 @@ export function ScheduleSessionDetail({
 
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#0bbbef]">
+              <p className="mb-3 annotation text-signal">
                 {getEventTypeLabel(event.type)}
               </p>
-              <h1 className="font-heading text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+              <h1 className="font-heading text-3xl font-semibold leading-tight tracking-[-0.025em] sm:text-4xl lg:text-5xl">
                 {event.title}
               </h1>
-              <div className="mt-5 flex flex-wrap gap-4 text-sm text-white/80">
+              <div className="mt-5 flex flex-wrap gap-4 text-sm text-on-dark/80">
                 <span className="inline-flex items-center gap-2">
-                  <Clock className="size-4 text-[#0bbbef]" />
+                  <Clock className="size-4 text-signal" />
                   {event.time} – {event.endTime}
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <MapPin className="size-4 text-[#0bbbef]" />
+                  <MapPin className="size-4 text-signal" />
                   {getEventLocationLabel(event).replace(/^Room:\s*/, "")}
                 </span>
                 <span className="inline-flex items-center gap-2">
-                  <Calendar className="size-4 text-[#0bbbef]" />
+                  <Calendar className="size-4 text-signal" />
                   {event.duration} min
                 </span>
               </div>
@@ -224,8 +224,8 @@ export function ScheduleSessionDetail({
                 <Button
                   variant="outline"
                   className={cn(
-                    "border-white/20 bg-white/10 text-white hover:bg-white/15",
-                    isFavorite && "border-[#0bbbef]/40 bg-[#0bbbef]/15"
+                    "border-on-dark/20 bg-on-dark/10 text-on-dark hover:bg-on-dark/15",
+                    isFavorite && "border-signal/60 bg-signal/20"
                   )}
                   onClick={onToggleFavorite}
                 >
@@ -238,7 +238,7 @@ export function ScheduleSessionDetail({
               ) : null}
               <Button
                 variant="outline"
-                className="border-white/20 bg-white/10 text-white hover:bg-white/15"
+                className="border-on-dark/20 bg-on-dark/10 text-on-dark hover:bg-on-dark/15"
                 onClick={handleShare}
               >
                 <Share2 className="size-4" />
@@ -246,7 +246,7 @@ export function ScheduleSessionDetail({
               </Button>
               <Button
                 variant="outline"
-                className="hidden border-white/20 bg-white/10 text-white hover:bg-white/15 sm:inline-flex"
+                className="hidden border-on-dark/20 bg-on-dark/10 text-on-dark hover:bg-on-dark/15 sm:inline-flex"
                 onClick={handleCopy}
               >
                 <Copy className="size-4" />
@@ -255,15 +255,15 @@ export function ScheduleSessionDetail({
             </div>
           </div>
           {copyMessage ? (
-            <p className="mt-4 text-sm font-medium text-[#0bbbef]">{copyMessage}</p>
+            <p className="mt-4 text-sm font-medium text-signal">{copyMessage}</p>
           ) : null}
         </div>
       </section>
 
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         {event.isServiceSession ? (
-          <section className="mx-auto max-w-2xl overflow-hidden rounded-3xl border border-border/70 bg-card px-6 py-8 sm:px-8">
-            <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-[#0bbbef]">
+          <section className="mx-auto max-w-2xl overflow-hidden rounded-2xl border border-border/70 bg-card px-6 py-8 sm:px-8">
+            <p className="mb-5 annotation text-signal-ink">
               Schedule information
             </p>
             {event.description ? (
@@ -284,14 +284,14 @@ export function ScheduleSessionDetail({
                   <SessionSpeakerProfile key={speaker.id} speaker={speaker} />
                 ))
               ) : (
-                <section className="rounded-3xl border border-border/70 bg-card p-8 text-sm text-muted-foreground">
+                <section className="rounded-2xl border border-border/70 bg-card p-8 text-sm text-muted-foreground">
                   Speaker profiles will appear here once available.
                 </section>
               )}
             </div>
 
-            <section className="overflow-hidden rounded-3xl border border-border/70 bg-card px-6 py-8 sm:px-8 lg:sticky lg:top-24">
-              <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-[#0bbbef]">
+            <section className="overflow-hidden rounded-2xl border border-border/70 bg-card px-6 py-8 sm:px-8 lg:sticky lg:top-24">
+              <p className="mb-5 annotation text-signal-ink">
                 The talk
               </p>
               {event.description ? (
@@ -319,7 +319,7 @@ export function ScheduleSessionDetail({
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-primary/35 transition-colors group-hover:bg-primary/45">
-                      <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-primary">
+                      <span className="inline-flex items-center gap-2 rounded-full bg-paper px-4 py-2 text-sm font-semibold text-primary">
                         <Play className="size-4 fill-current" />
                         Watch recording
                       </span>

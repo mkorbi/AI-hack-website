@@ -6,6 +6,7 @@ import type { SitePresentation } from '@/lib/site-presentation';
 import { cn } from '@/lib/utils';
 
 import { BlueskyIcon, DiscordIcon } from './icons';
+import { MUNICH_COORDINATES, Ruler } from './calibrated';
 import { SiteLogo } from './site-logo';
 
 const SOCIAL_LINKS = [
@@ -50,7 +51,8 @@ const SOCIAL_LINKS = [
 const EXPLORE_LINKS = [
   { text: 'Schedule', ...LINKS.schedule },
   { text: 'Speakers', ...LINKS.speakers },
-  { text: 'Sponsors', ...LINKS.sponsors },
+  { text: 'Format', to: '/#format' },
+  { text: 'Topics', to: '/#topics' },
 ] as const;
 
 const COMMUNITY_LINKS = MENUS.footer.filter((item) =>
@@ -73,7 +75,7 @@ function FooterLink({
   children: React.ReactNode;
 }) {
   const className =
-    'cursor-pointer text-sm text-muted-foreground transition-colors hover:text-primary';
+    'cursor-pointer text-sm text-on-dark-muted transition-colors hover:text-signal';
 
   if (external) {
     return (
@@ -113,7 +115,7 @@ function FooterLinkList({ items }: { items: readonly FooterLinkItem[] }) {
 
 function FooterColumnTitle({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary/70">
+    <p className="annotation mb-3 text-steel">
       {children}
     </p>
   );
@@ -136,16 +138,19 @@ export function SiteFooter({ navigation }: { navigation: SitePresentation['navig
   }));
 
   return (
-    <footer className="mt-auto border-t border-primary/10 bg-[#ffffff]">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <footer className="mt-auto bg-graphite text-on-dark">
+      <div className="mx-auto max-w-7xl px-4 pb-8 pt-10 sm:px-6 lg:px-8">
+        <div className="mb-10 text-on-dark/60">
+          <Ruler markers={[0]} />
+        </div>
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-10">
           <div className="flex shrink-0 flex-col items-start gap-3">
             <Link href="/" className="cursor-pointer">
-              <SiteLogo variant="legacy" size="sm" />
+              <SiteLogo variant="hero" size="sm" />
             </Link>
             <a
               href={`mailto:${SPONSOR_CONTACT_EMAIL}`}
-              className="cursor-pointer text-sm leading-none text-muted-foreground transition-colors hover:text-primary"
+              className="cursor-pointer text-sm leading-none text-on-dark-muted transition-colors hover:text-signal"
             >
               {SPONSOR_CONTACT_EMAIL}
             </a>
@@ -167,9 +172,9 @@ export function SiteFooter({ navigation }: { navigation: SitePresentation['navig
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col gap-4 border-t border-dashed border-primary/10 pt-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-          <p className="text-xs text-muted-foreground">
-            © {currentYear} Cloud Native Summit Munich
+        <div className="mt-10 flex flex-col gap-4 border-t border-on-dark/15 pt-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+          <p className="annotation text-steel">
+            © {currentYear} AI Hack Fest Munich
           </p>
 
           <div className="flex flex-wrap items-center gap-1.5">
@@ -181,7 +186,7 @@ export function SiteFooter({ navigation }: { navigation: SitePresentation['navig
                 rel="noopener noreferrer"
                 aria-label={item.label}
                 className={cn(
-                  'flex size-8 cursor-pointer items-center justify-center rounded-lg ring-1 ring-primary/10 transition-colors hover:bg-primary/5'
+                  'flex size-8 cursor-pointer items-center justify-center rounded-md text-on-dark ring-1 ring-on-dark/20 transition-colors hover:bg-on-dark/10 hover:ring-signal'
                 )}
               >
                 {'iconSrc' in item ? (
@@ -190,7 +195,7 @@ export function SiteFooter({ navigation }: { navigation: SitePresentation['navig
                     alt=""
                     width={item.label === 'YouTube' ? 20 : 16}
                     height={16}
-                    className={item.className}
+                    className={cn(item.className, 'brightness-0 invert opacity-85')}
                   />
                 ) : (
                   <item.icon className={item.className} />
@@ -199,9 +204,7 @@ export function SiteFooter({ navigation }: { navigation: SitePresentation['navig
             ))}
           </div>
 
-          <p className="text-xs text-muted-foreground sm:text-right">
-            Built by the community, for the community
-          </p>
+          <p className="annotation text-steel sm:text-right">{MUNICH_COORDINATES}</p>
         </div>
       </div>
     </footer>

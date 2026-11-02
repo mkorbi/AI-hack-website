@@ -17,6 +17,7 @@ export type HomepageSectionId =
   | 'cfp'
   | 'moments'
   | 'expect'
+  | 'topics'
   | 'ticketing'
   | 'speakers'
   | 'schedule'

@@ -12,7 +12,7 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${member.name} on LinkedIn`}
-      className="group relative block aspect-[4/5] w-full cursor-pointer overflow-hidden rounded-2xl bg-white text-left shadow-md ring-1 ring-primary/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+      className="group relative block aspect-[4/5] w-full cursor-pointer overflow-hidden rounded-2xl bg-paper text-left shadow-md ring-1 ring-primary/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
     >
       <Image
         src={member.photo}
@@ -25,19 +25,19 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
       <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4">
         <div className="flex items-end justify-between gap-2">
           <div className="min-w-0">
-            <h3 className="font-heading text-sm font-bold leading-tight text-white sm:text-base">
+            <h3 className="font-heading text-sm font-semibold leading-tight text-on-dark sm:text-base">
               {member.name}
             </h3>
-            <p className="mt-0.5 line-clamp-2 text-xs font-medium text-[#0bbbef] sm:text-sm">
+            <p className="mt-0.5 line-clamp-2 text-xs font-medium text-signal sm:text-sm">
               {member.role}
             </p>
             {member.organization ? (
-              <p className="mt-0.5 line-clamp-1 text-xs text-white/75">
+              <p className="mt-0.5 line-clamp-1 text-xs text-on-dark/75">
                 {member.organization}
               </p>
             ) : null}
           </div>
-          <div className="flex shrink-0 rounded-full bg-white/20 p-1.5 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+          <div className="flex shrink-0 rounded-full bg-on-dark/20 p-1.5 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
             <SocialIcon url={member.linkedin} isWhite />
           </div>
         </div>

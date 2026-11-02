@@ -45,7 +45,17 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-plex-mono);
+  --color-graphite: var(--graphite);
+  --color-graphite-2: var(--graphite-2);
+  --color-fog: var(--fog);
+  --color-paper: var(--paper);
+  --color-steel: var(--steel);
+  --color-signal: var(--signal);
+  --color-signal-hover: var(--signal-hover);
+  --color-signal-ink: var(--signal-ink);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-muted: var(--on-dark-muted);
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -86,39 +96,54 @@
 }
 
 :root {
-  /* CNS brand — primary #004258, accent #0BBBEF (logo cyan) */
-  --background: #ffffff;
-  --foreground: oklch(0.34 0.048 220.5);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.34 0.048 220.5);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.34 0.048 220.5);
-  --primary: oklch(0.34 0.048 220.5);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.96 0.015 220);
-  --secondary-foreground: oklch(0.34 0.048 220.5);
-  --muted: oklch(0.96 0.012 220);
-  --muted-foreground: oklch(0.48 0.03 220);
-  --accent: oklch(0.72 0.13 230);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.91 0.012 220);
-  --input: oklch(0.91 0.012 220);
-  --ring: oklch(0.34 0.048 220.5);
-  --chart-1: oklch(0.34 0.048 220.5);
-  --chart-2: oklch(0.72 0.13 230);
-  --chart-3: oklch(0.55 0.1 240);
-  --chart-4: oklch(0.7 0.04 220);
-  --chart-5: oklch(0.85 0.03 220);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.34 0.048 220.5);
-  --sidebar-primary: oklch(0.34 0.048 220.5);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0.01 220);
-  --sidebar-accent-foreground: oklch(0.34 0.048 220.5);
-  --sidebar-border: oklch(0.91 0.01 220);
-  --sidebar-ring: oklch(0.34 0.048 220.5);
+  /*
+   * Calibrated brand: "the precision instrument".
+   * Graphite is the stage, fog is the page, phosphor green is the one signal.
+   * Phosphor is used on graphite or as a fill; on fog, text accents use signal-ink.
+   */
+  --graphite: #14171a;
+  --graphite-2: #1d2124;
+  --fog: #e3e6e4;
+  --paper: #f1f3f2;
+  --steel: #7a8187;
+  --signal: #3ddc84;
+  --signal-hover: #62e39c;
+  --signal-ink: #116a3b;
+  --on-dark: #e3e6e4;
+  --on-dark-muted: #a3aaae;
+
+  --background: var(--fog);
+  --foreground: var(--graphite);
+  --card: var(--paper);
+  --card-foreground: var(--graphite);
+  --popover: var(--paper);
+  --popover-foreground: var(--graphite);
+  --primary: var(--graphite);
+  --primary-foreground: var(--fog);
+  --secondary: #d6dad8;
+  --secondary-foreground: var(--graphite);
+  --muted: #d9dddb;
+  --muted-foreground: #5e636b;
+  --accent: var(--signal);
+  --accent-foreground: var(--graphite);
+  --destructive: #c4321f;
+  --border: #c9cecc;
+  --input: #c9cecc;
+  --ring: var(--graphite);
+  --chart-1: var(--graphite);
+  --chart-2: var(--signal);
+  --chart-3: var(--steel);
+  --chart-4: #5e636b;
+  --chart-5: #c9cecc;
+  --radius: 0.5rem;
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--graphite);
+  --sidebar-primary: var(--graphite);
+  --sidebar-primary-foreground: var(--fog);
+  --sidebar-accent: #d9dddb;
+  --sidebar-accent-foreground: var(--graphite);
+  --sidebar-border: #c9cecc;
+  --sidebar-ring: var(--graphite);
 }
 
 @layer base {
@@ -147,11 +172,44 @@
 }
 
 @layer utilities {
+  /* Faint technical-drawing grid, used on graphite. No glow. */
+  .tech-grid {
+    background-image:
+      linear-gradient(to right, rgb(227 230 228 / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(227 230 228 / 0.045) 1px, transparent 1px);
+    background-size: 80px 80px;
+    background-position: -1px -1px;
+  }
+
+  /* Graphite stage with the technical grid. */
   .hero-mesh {
+    background-color: var(--graphite);
+    background-image:
+      linear-gradient(to right, rgb(227 230 228 / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(227 230 228 / 0.045) 1px, transparent 1px);
+    background-size: 80px 80px;
+    background-position: -1px -1px;
+  }
+
+  /* Annotation voice: IBM Plex Mono, uppercase, tracked. */
+  .annotation {
+    font-family: var(--font-plex-mono), ui-monospace, monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  /* The ruler: baseline, minor ticks every 8px, major ticks every 80px. */
+  .ruler {
+    --ruler-ink: currentColor;
+    position: relative;
+    height: 16px;
     background:
-      radial-gradient(ellipse 70% 55% at 75% 25%, oklch(0.72 0.13 230 / 0.18), transparent 55%),
-      radial-gradient(ellipse 60% 50% at 15% 70%, oklch(0.5 0.08 220 / 0.2), transparent 55%),
-      linear-gradient(160deg, oklch(0.22 0.045 220) 0%, oklch(0.34 0.048 220.5) 45%, oklch(0.28 0.04 220) 100%);
+      linear-gradient(var(--ruler-ink), var(--ruler-ink)) top left / 100% 1px no-repeat,
+      repeating-linear-gradient(90deg, var(--ruler-ink) 0 1px, transparent 1px 8px) top left / 100% 7px no-repeat,
+      repeating-linear-gradient(90deg, var(--ruler-ink) 0 1px, transparent 1px 80px) top left / 100% 15px no-repeat;
   }
 
   .text-balance {

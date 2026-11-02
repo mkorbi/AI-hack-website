@@ -18,7 +18,7 @@ export function ScheduleFavoriteIcon({
     <Heart
       className={cn(
         'shrink-0 transition-colors',
-        active && tone === 'inverse' && 'fill-white text-white',
+        active && tone === 'inverse' && 'fill-on-dark text-on-dark',
         active && tone === 'default' && 'fill-red-500 text-red-500',
         !active && 'fill-transparent text-current',
         className,

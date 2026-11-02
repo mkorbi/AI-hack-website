@@ -50,7 +50,7 @@ export function SchedulePill({
         variant === 'favorite' && [
           'rounded-full px-3.5 py-2 text-sm',
           active
-            ? 'bg-red-500 text-white shadow-sm ring-1 ring-red-500/20'
+            ? 'bg-red-500 text-on-dark shadow-sm ring-1 ring-red-500/20'
             : 'bg-background text-muted-foreground ring-1 ring-border/80 hover:bg-red-50 hover:text-red-600',
         ],
         className,

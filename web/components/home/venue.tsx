@@ -34,20 +34,17 @@ const venueFeatures = [
     icon: Utensils,
     title: 'Catering',
     description: 'Vegetarian & vegan options throughout the event.',
-    accent: 'from-primary/10 to-primary/5',
-  },
+      },
   {
     icon: Calendar,
     title: '2-day event',
     description: 'Two full days of talks, workshops, and activities.',
-    accent: 'from-[#0bbbef]/15 to-primary/5',
-  },
+      },
   {
     icon: Users,
     title: 'Networking',
     description: 'Connect with peers in an open, welcoming atmosphere.',
-    accent: 'from-primary/8 to-transparent',
-  },
+      },
 ];
 
 function ImageSlider({ images }: { images: string[] }) {
@@ -113,7 +110,7 @@ function ImageSlider({ images }: { images: string[] }) {
               key={index}
               className={cn(
                 'size-2 cursor-pointer rounded-full transition-colors',
-                index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                index === currentImageIndex ? 'bg-paper' : 'bg-on-dark/50'
               )}
               onClick={() => setCurrentImageIndex(index)}
               aria-label={`Go to slide ${index + 1}`}
@@ -123,7 +120,7 @@ function ImageSlider({ images }: { images: string[] }) {
 
         <button
           type="button"
-          className="absolute left-4 top-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-primary/50 p-2 text-white backdrop-blur-sm transition-colors hover:bg-primary/70"
+          className="absolute left-4 top-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-primary/50 p-2 text-on-dark backdrop-blur-sm transition-colors hover:bg-primary/70"
           onClick={goToPrevious}
           aria-label="Previous image"
         >
@@ -131,7 +128,7 @@ function ImageSlider({ images }: { images: string[] }) {
         </button>
         <button
           type="button"
-          className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-primary/50 p-2 text-white backdrop-blur-sm transition-colors hover:bg-primary/70"
+          className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-primary/50 p-2 text-on-dark backdrop-blur-sm transition-colors hover:bg-primary/70"
           onClick={goToNext}
           aria-label="Next image"
         >
@@ -155,18 +152,18 @@ export function Venue({ archive = false, showHotels = false, tone = 'default' }:
     <Section id="venue" className={cn(SECTION_TONE_CLASS[tone])}>
       <div className="mx-auto max-w-3xl text-center">
         <MotionReveal>
-          <h2 className="font-heading text-3xl font-bold leading-[1.08] tracking-tight text-primary sm:text-4xl lg:text-5xl">
+          <h2 className="font-heading text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-primary sm:text-4xl lg:text-5xl">
             {archive ? 'Where it all' : 'Meet us at'}
             {' '}
             <br />
-            <span className="text-[#0bbbef]">
+            <span className="text-signal-ink">
               {archive ? 'came together' : venue.venue}
             </span>
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
             {archive
-              ? `${EVENT_CONFIG.archive.venue} gave CNS Munich ${EVENT_CONFIG.archive.edition} room for talks, workshops, and the conversations in between.`
-              : `${EVENT_CONFIG.upcoming.dateLabel} at Munich Arabellapark — easy to reach and built for community, talks, and hallway conversations.`}
+              ? `${EVENT_CONFIG.archive.venue} gave ${EVENT_CONFIG.archive.shortName} ${EVENT_CONFIG.archive.edition} room for talks, hands-on sessions, and the conversations in between.`
+              : `${EVENT_CONFIG.upcoming.dateLabel} in ${EVENT_CONFIG.upcoming.location}. Built for talks, hands-on sessions, and hallway conversations.`}
           </p>
         </MotionReveal>
       </div>
@@ -180,11 +177,11 @@ export function Venue({ archive = false, showHotels = false, tone = 'default' }:
 
         <MotionReveal delay={0.12} className="lg:col-span-5">
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-            <h3 className="font-heading text-2xl font-bold text-primary sm:text-3xl">{venue.venue}</h3>
+            <h3 className="font-heading text-2xl font-semibold text-primary sm:text-3xl">{venue.venue}</h3>
             <p className="mt-2 text-lg text-muted-foreground">at Munich Arabellapark</p>
 
             <div className="mt-6 flex items-start gap-3 text-muted-foreground">
-              <MapPin className="mt-0.5 size-5 shrink-0 text-[#0bbbef]" />
+              <MapPin className="mt-0.5 size-5 shrink-0 text-signal-ink" />
               <div className="text-left text-sm leading-relaxed sm:text-base">
                 <p>Rosenkavalierpl. 13</p>
                 <p>81925 Munich, Germany</p>
@@ -219,18 +216,16 @@ export function Venue({ archive = false, showHotels = false, tone = 'default' }:
 
       {!archive ? (
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-          {venueFeatures.map(({ icon: Icon, title, description, accent }, i) => (
+          {venueFeatures.map(({ icon: Icon, title, description }, i) => (
             <MotionReveal key={title} delay={0.14 + i * 0.06}>
               <div
-                className={cn(
-                  'group flex h-full flex-col rounded-2xl bg-gradient-to-br p-6 ring-1 ring-primary/10 transition-all hover:-translate-y-1 hover:shadow-md sm:p-8',
-                  accent
-                )}
+                className="group flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-graphite/40 sm:p-8"
               >
-                <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-[#ffffff]/80 ring-1 ring-primary/10">
-                  <Icon className="size-6 text-primary" />
-                </div>
-                <h3 className="font-heading text-xl font-bold text-primary">{title}</h3>
+                <div className="mb-6 flex items-center justify-between">
+                <span aria-hidden className="h-1.5 w-12 bg-signal" />
+                <Icon className="size-5 text-steel" aria-hidden />
+              </div>
+                <h3 className="font-heading text-xl font-semibold text-primary">{title}</h3>
                 <p className="mt-2 flex-1 leading-relaxed text-muted-foreground">{description}</p>
               </div>
             </MotionReveal>

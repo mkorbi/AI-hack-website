@@ -8,7 +8,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata: Metadata = createMetadata({
   title: "Team",
   description:
-    "Meet the volunteer committee behind Cloud Native Summit Munich — practitioners who organize the community conference in Munich.",
+    "Meet the volunteers behind AI Hack Fest, the community event for AI engineering and AI platforms in Munich.",
   pathname: "/team",
 });
 
@@ -22,10 +22,10 @@ export default function TeamPage() {
             Meet the people
             {' '}
             <br />
-            <span className="text-[#0bbbef]">behind the summit</span>
+            <span className="text-on-dark-muted">behind AI Hack Fest</span>
           </>
         }
-        description="A dedicated committee of cloud native practitioners who bring the Munich community together — for learning, growth, and diversity."
+        description="Engineers from the Munich community who build AI systems and platforms themselves, and want a day that is about exactly that."
       />
       <TeamMembers />
     </SiteLayout>

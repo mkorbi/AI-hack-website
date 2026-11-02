@@ -13,11 +13,11 @@ import { TEAM_MEMBERS, TEAM_ORGANIZERS } from "@/lib/team-data";
 export function TeamMembers() {
   return (
     <>
-      <Section className="bg-[#ffffff] pb-12 md:pb-16">
+      <Section className="bg-background pb-12 md:pb-16">
         <MotionReveal>
           <p className="mx-auto max-w-2xl text-center text-lg leading-relaxed text-muted-foreground">
-            A volunteer committee of practitioners who plan, run, and grow the
-            summit — keeping it community-driven year after year.
+            Volunteers from the Munich tech community who plan and run the day,
+            and keep it about engineering instead of sales.
           </p>
         </MotionReveal>
 
@@ -30,16 +30,16 @@ export function TeamMembers() {
         </div>
       </Section>
 
-      <Section className="border-t border-dashed border-primary/10 bg-[#ffffff] pt-0">
+      <Section className="border-t border-dashed border-primary/10 bg-background pt-0">
         <MotionReveal>
           <div className="text-center">
             <Eyebrow className="mb-4">Organizers</Eyebrow>
-            <h2 className="font-heading text-2xl font-bold tracking-tight text-primary sm:text-3xl">
+            <h2 className="font-heading text-2xl font-semibold tracking-[-0.025em] text-primary sm:text-3xl">
               Brought to you by
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
-              Cloud Native Summit Munich is organized with support from our
-              founding partners in the Munich cloud native community.
+              AI Hack Fest is organized with support from partners in the Munich
+              tech community.
             </p>
           </div>
         </MotionReveal>
@@ -62,7 +62,7 @@ export function TeamMembers() {
               className="inline-flex cursor-pointer items-center gap-0.5 font-semibold text-primary transition-colors hover:text-primary/80"
             >
               Join our Discord
-              <ArrowUpRight className="size-3.5 text-[#0bbbef]" />
+              <ArrowUpRight className="size-3.5 text-signal-ink" />
             </Link>
           </p>
         </MotionReveal>

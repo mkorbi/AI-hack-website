@@ -29,7 +29,7 @@ export function SectionHeader({
           <Eyebrow>{eyebrow}</Eyebrow>
         </div>
       ) : null}
-      <h2 className="font-heading text-3xl font-bold tracking-tight text-primary sm:text-4xl lg:text-5xl lg:leading-[1.1]">
+      <h2 className="font-heading text-3xl font-semibold tracking-[-0.025em] text-primary sm:text-4xl lg:text-5xl lg:leading-[1.08]">
         {title}
       </h2>
       {description ? (

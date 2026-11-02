@@ -80,11 +80,11 @@ const commonProgramCopy = (
 ) => ({
   announcedSpeakerIds,
   isArchive: false,
-  scheduleDescription: `Browse every talk and workshop from two community-driven days in ${edition.location}.`,
+  scheduleDescription: `Browse every talk and hands-on session of one engineering day in ${edition.location}.`,
   scheduleEyebrow: `${edition.edition} Program`,
   scheduleTitle: 'Explore the program',
   speakerDescription:
-    'Practitioners and experts from the cloud native community — browse the full lineup and session topics.',
+    'Engineers who build AI systems and platforms in production. Browse the lineup and their sessions.',
   speakerEyebrow: 'Speakers',
   speakerTitleAccent: 'speakers',
   speakerTitleLead: 'Meet our',
@@ -96,9 +96,9 @@ const earlyAnnouncementProgramCopy = (
 ) => ({
   ...commonProgramCopy(edition, announcedSpeakerIds),
   speakerEyebrow: 'Early announcements',
-  speakerTitleLead: 'Meet the voices',
-  speakerTitleAccent: 'shaping the next edition',
-  speakerDescription: 'Early speaker announcements — more names coming soon.',
+  speakerTitleLead: 'Meet the builders',
+  speakerTitleAccent: 'on our first stage',
+  speakerDescription: 'Early speaker announcements. More names follow soon.',
 });
 
 const archiveProgramCopy = (
@@ -107,15 +107,16 @@ const archiveProgramCopy = (
 ) => ({
   announcedSpeakerIds,
   isArchive: true,
-  scheduleDescription: `Browse every talk and workshop from two community-driven days in ${archive.location}.`,
+  scheduleDescription: `Browse every talk and hands-on session from ${archive.shortName} ${archive.edition} in ${archive.location}.`,
   scheduleEyebrow: `${archive.edition} Archive`,
   scheduleTitle: `Revisit the ${archive.edition} program`,
-  speakerDescription:
-    'Revisit the practitioners and experts who made two days of community learning possible.',
+  speakerDescription: 'Revisit the practitioners who shared what they built and what they learned.',
   speakerEyebrow: `${archive.edition} Speaker Archive`,
   speakerTitleAccent: `${archive.shortName} ${archive.edition}`,
   speakerTitleLead: 'The voices of',
 });
+
+const HERO_TITLE = { titleLead: 'AI Hack Fest', titleAccent: 'No sales, just tech' } as const;
 
 export function createSitePresentation(
   stage: EventStage,
@@ -129,7 +130,6 @@ export function createSitePresentation(
   } as const;
   const { archive, upcoming } = config;
   const programCopy = commonProgramCopy(upcoming, config.campaigns.announcedSpeakerIds);
-  const archiveEdition = config.archive.edition;
   const archiveProgram = archiveProgramCopy(archive, config.campaigns.announcedSpeakerIds);
   const hasAnnouncedSpeakers = config.campaigns.announcedSpeakerIds.length > 0;
   const previewSpeakerSections: HomepageSectionId[] = hasAnnouncedSpeakers ? ['speakers'] : [];
@@ -143,39 +143,32 @@ export function createSitePresentation(
         event: { stage, isLive: false, isRecap: false },
         hero: {
           eyebrow: upcoming.dateLabel
-            ? `${upcoming.dateLabel} · ${upcoming.location}`
-            : `CNS Munich ${upcoming.edition} · ${upcoming.location}`,
-          titleLead: 'Cloud Native',
-          titleAccent: 'returns to Munich',
+            ? `${upcoming.dateLabel} · ${upcoming.location} · First edition`
+            : `${upcoming.shortName} ${upcoming.edition} · ${upcoming.location}`,
+          ...HERO_TITLE,
           description:
-            'A community-built gathering for the people shaping cloud native. Program and ticket details are coming soon.',
+            'One day in Munich for engineers who build AI systems and the platforms they run on. Deep technical talks and hands-on sessions from practitioners, never vendor pitches.',
           primaryAction: action('Join the community', config.community.discordUrl, 'users', true),
-          secondaryAction: action(
-            `Explore ${archiveEdition} highlights`,
-            config.archive.galleryUrl,
-            'camera',
-            true
-          ),
+          secondaryAction: action('See the format', '/#format', 'calendar'),
           showStats: false,
         },
         homepage: {
-          sections: ['about', 'moments', 'schedule', 'speakers', 'sponsors', 'venue'],
+          sections: ['about', 'expect', 'topics', 'moments'],
         },
         metadata: {
-          title: `${upcoming.name} ${upcoming.edition}`,
-          description:
-            'Cloud Native Summit Munich is returning. Join the community and explore highlights from the latest edition.',
+          title: `${upcoming.name} ${upcoming.edition}: No sales, just tech`,
+          description: `${upcoming.name} is one day on AI engineering and AI platforms in ${upcoming.location}. Talks and hands-on sessions by practitioners. First edition in ${upcoming.dateLabel}.`,
         },
         navigation: {
           showCfp: false,
-          showSchedule: true,
-          showSpeakers: true,
-          scheduleLabel: `${archiveEdition} Schedule`,
-          speakersLabel: `${archiveEdition} Speakers`,
+          showSchedule: false,
+          showSpeakers: false,
+          scheduleLabel: 'Schedule',
+          speakersLabel: 'Speakers',
         },
         program: {
           mode: 'archive',
-          noIndex: false,
+          noIndex: true,
           ...archiveProgram,
         },
         sponsorship,
@@ -207,8 +200,8 @@ export function createSitePresentation(
             titleLead: 'Munich, you',
             titleAccent: 'filled the room',
             description: hasPublishedProgram
-              ? 'CNS Munich is sold out. Explore the full program and get ready for two community-driven days.'
-              : 'CNS Munich is sold out. Join the community for event updates and future announcements.',
+              ? `${upcoming.name} is sold out. Explore the full program and get ready for a day of building.`
+              : `${upcoming.name} is sold out. Join the community for event updates.`,
             primaryAction: hasPublishedProgram
               ? action('Explore the schedule', '/schedule', 'calendar')
               : action('Join event updates', config.community.discordUrl, 'users', true),
@@ -219,34 +212,24 @@ export function createSitePresentation(
           },
           homepage: {
             sections: hasPublishedProgram
-              ? [
-                  'schedule',
-                  'speakers',
-                  'ticketing',
-                  'cfp',
-                  'expect',
-                  'sponsors',
-                  'venue',
-                  'hotels',
-                  'moments',
-                ]
+              ? ['schedule', 'speakers', 'ticketing', 'cfp', 'expect', 'topics', 'venue', 'hotels', 'moments']
               : [
                   'about',
                   'ticketing',
                   'cfp',
                   'expect',
+                  'topics',
                   ...previewSpeakerSections,
                   'moments',
-                  'sponsors',
                   'venue',
                   'hotels',
                 ],
           },
           metadata: {
-            title: `${upcoming.name} ${upcoming.edition} — Sold Out`,
+            title: `${upcoming.name} ${upcoming.edition}: Sold out`,
             description: hasPublishedProgram
-              ? `CNS Munich ${upcoming.edition} is sold out. Explore the schedule and speakers.`
-              : `CNS Munich ${upcoming.edition} is sold out. Join the community for updates.`,
+              ? `${upcoming.name} ${upcoming.edition} is sold out. Explore the schedule and speakers.`
+              : `${upcoming.name} ${upcoming.edition} is sold out. Join the community for updates.`,
           },
           navigation: {
             showCfp: true,
@@ -272,11 +255,12 @@ export function createSitePresentation(
           eyebrow: programPublished
             ? `${ticketDate} · Program live`
             : `${ticketDate} · ${upcoming.location}`,
-          titleLead: programPublished ? 'Build your' : 'Cloud Native',
-          titleAccent: programPublished ? 'two days in Munich' : 'Summit Munich',
+          ...(programPublished
+            ? { titleLead: 'Build your', titleAccent: 'day in Munich' }
+            : HERO_TITLE),
           description: programPublished
-            ? 'Explore the full program, discover the people behind the sessions, and make CNS Munich your own.'
-            : 'Two days of practical talks, hands-on workshops, and genuine community — built by practitioners, for practitioners.',
+            ? 'Explore the full program, pick your track, and meet the engineers behind the sessions.'
+            : 'One day of deep technical talks and hands-on sessions on AI engineering and AI platforms. Built by practitioners, for practitioners.',
           primaryAction: programPublished
             ? action('Explore the schedule', '/schedule', 'calendar')
             : action('Get your ticket', ticketUrl, 'ticket', true),
@@ -287,38 +271,24 @@ export function createSitePresentation(
         },
         homepage: {
           sections: programPublished
-            ? [
-                'schedule',
-                'speakers',
-                'ticketing',
-                'cfp',
-                'about',
-                'expect',
-                'sponsors',
-                'venue',
-                'hotels',
-                'moments',
-              ]
+            ? ['schedule', 'speakers', 'ticketing', 'cfp', 'about', 'expect', 'topics', 'venue', 'hotels', 'moments']
             : [
                 'about',
                 'ticketing',
                 'cfp',
                 'expect',
+                'topics',
                 ...previewSpeakerSections,
                 'moments',
-                'sponsors',
                 'venue',
                 'hotels',
-                'schedule',
               ],
         },
         metadata: {
-          title: programPublished
-            ? `${upcoming.name} ${upcoming.edition}`
-            : upcoming.name,
+          title: programPublished ? `${upcoming.name} ${upcoming.edition}` : upcoming.name,
           description: programPublished
-            ? `Explore the complete ${upcoming.edition} program and get tickets for two cloud native days in ${upcoming.location}.`
-            : `Get tickets for ${upcoming.name} ${upcoming.edition} in ${upcoming.location}.`,
+            ? `Explore the ${upcoming.edition} program and get tickets for one day of AI engineering in ${upcoming.location}.`
+            : `Get tickets for ${upcoming.name} ${upcoming.edition} in ${upcoming.location}. No sales, just tech.`,
         },
         navigation: {
           showCfp: true,
@@ -344,19 +314,19 @@ export function createSitePresentation(
         hero: {
           eyebrow: `Happening now · ${liveVenue}`,
           titleLead: 'Welcome to',
-          titleAccent: 'CNS Munich',
+          titleAccent: upcoming.shortName,
           description:
-            'Your two days of talks, workshops, and community are underway. Keep the live schedule close.',
+            'Your day of talks and hands-on sessions is underway. Keep the live schedule close.',
           primaryAction: action('Open live schedule', '/app/schedule', 'calendar'),
           secondaryAction: action('Venue information', '/#venue', 'map'),
           showStats: true,
         },
         homepage: {
-          sections: ['schedule', 'venue', 'speakers', 'sponsors', 'moments'],
+          sections: ['schedule', 'venue', 'speakers', 'moments'],
         },
         metadata: {
-          title: `${upcoming.name} ${upcoming.edition} — Live`,
-          description: `CNS Munich ${upcoming.edition} is live at ${liveVenue}. Open the schedule and event information.`,
+          title: `${upcoming.name} ${upcoming.edition}: Live`,
+          description: `${upcoming.name} ${upcoming.edition} is live at ${liveVenue}. Open the schedule and event information.`,
         },
         navigation: {
           showCfp: false,
@@ -383,18 +353,12 @@ export function createSitePresentation(
         event: { stage, isLive: false, isRecap: true },
         hero: {
           eyebrow: `${archive.dateLabel} · Thank you, Munich`,
-          titleLead: 'What a',
-          titleAccent: `summit, ${archive.edition}`,
-          description:
-            `Two remarkable days of practical knowledge, open conversations, and a community that made every moment count. CNS Munich ${upcoming.edition} is already taking shape.`,
-          primaryAction: action(
-            `View ${archiveEdition} photos`,
-            config.archive.galleryUrl,
-            'camera',
-            true
-          ),
+          titleLead: 'Thank you,',
+          titleAccent: 'builders',
+          description: `A day of AI engineering, honest talks, and hands-on work. ${upcoming.name} ${upcoming.edition} is already taking shape.`,
+          primaryAction: action(`View ${archive.edition} photos`, config.archive.galleryUrl, 'camera', true),
           secondaryAction: action(
-            `Join CNS Munich ${upcoming.edition}`,
+            `Join ${upcoming.name} ${upcoming.edition}`,
             config.community.discordUrl,
             'users',
             true
@@ -402,7 +366,7 @@ export function createSitePresentation(
           showStats: true,
         },
         homepage: {
-          sections: ['moments', 'about', 'schedule', 'speakers', 'sponsors', 'venue'],
+          sections: ['moments', 'about', 'schedule', 'speakers', 'venue'],
         },
         metadata: {
           title: `${archive.name} ${archive.edition}`,
@@ -412,8 +376,8 @@ export function createSitePresentation(
           showCfp: false,
           showSchedule: true,
           showSpeakers: true,
-          scheduleLabel: `${archiveEdition} Schedule`,
-          speakersLabel: `${archiveEdition} Speakers`,
+          scheduleLabel: `${archive.edition} Schedule`,
+          speakersLabel: `${archive.edition} Speakers`,
         },
         program: {
           mode: 'archive',

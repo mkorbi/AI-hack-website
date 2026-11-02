@@ -11,7 +11,7 @@ export function generateMetadata(): Metadata {
   return createMetadata({
     title: page?.title ?? "Our Vision",
     description:
-      "Why Cloud Native Summit Munich is an independent, community-led event for open source, cloud native, and AI practitioners.",
+      "Why AI Hack Fest is a community-led day for engineers who build AI systems and AI platforms. No sales, just tech.",
     pathname: `/${SLUG}`,
   });
 }

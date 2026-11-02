@@ -61,12 +61,12 @@ export const EVENT_CONFIG: EventConfig = {
   },
   upcoming: {
     edition: 2027,
-    name: 'Cloud Native Summit Munich',
-    ordinalLabel: '6th',
-    shortName: 'CNS Munich',
-    dateLabel: 'June 14–15, 2027',
+    name: 'AI Hack Fest',
+    ordinalLabel: '1st',
+    shortName: 'AI Hack Fest',
+    dateLabel: 'February 2027',
     location: 'Munich',
-    venue: 'smartvillage Bogenhausen',
+    venue: 'Venue to be announced',
     ticketUrl: 'https://fienta.com/cloud-native-summit-201687',
   },
   sponsorship: {

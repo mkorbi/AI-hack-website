@@ -60,11 +60,11 @@ export function SpeakerDetail({ speaker, backHref = '/speakers' }: SpeakerDetail
 
   return (
     <div className="min-h-screen bg-background">
-      <section className="hero-mesh border-b border-white/10 px-4 py-8 text-white sm:px-6 lg:px-8">
+      <section className="hero-mesh border-b border-on-dark/10 px-4 py-8 text-on-dark sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <Link
             href={backHref}
-            className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-white/80 transition-colors hover:text-white"
+            className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-on-dark/80 transition-colors hover:text-on-dark"
           >
             <ArrowLeft className="size-4" />
             Back to speakers
@@ -72,7 +72,7 @@ export function SpeakerDetail({ speaker, backHref = '/speakers' }: SpeakerDetail
 
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center">
-              <div className="relative size-36 shrink-0 overflow-hidden rounded-2xl bg-white/10 shadow-lg ring-2 ring-white/20 sm:size-40">
+              <div className="relative size-36 shrink-0 overflow-hidden rounded-2xl bg-on-dark/10 shadow-lg ring-2 ring-on-dark/20 sm:size-40">
                 {speaker.profilePicture ? (
                   <Image
                     src={speaker.profilePicture}
@@ -83,24 +83,24 @@ export function SpeakerDetail({ speaker, backHref = '/speakers' }: SpeakerDetail
                     priority
                   />
                 ) : (
-                  <div className="flex h-full items-center justify-center text-4xl font-bold text-white">
+                  <div className="flex h-full items-center justify-center text-4xl font-bold text-on-dark">
                     {speaker.fullName.charAt(0)}
                   </div>
                 )}
               </div>
 
               <div className="text-center sm:text-left">
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-[#0bbbef]">
+                <p className="mb-2 annotation text-signal">
                   Speaker
                 </p>
-                <h1 className="font-heading text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+                <h1 className="font-heading text-3xl font-semibold leading-tight tracking-[-0.025em] sm:text-4xl lg:text-5xl">
                   {speaker.fullName}
                 </h1>
                 {tagline ? (
-                  <p className="mt-3 text-lg text-white/85">{tagline}</p>
+                  <p className="mt-3 text-lg text-on-dark/85">{tagline}</p>
                 ) : null}
                 {company ? (
-                  <p className="mt-2 text-base font-semibold text-[#0bbbef]">{company}</p>
+                  <p className="mt-2 text-base font-semibold text-signal">{company}</p>
                 ) : null}
               </div>
             </div>
@@ -108,7 +108,7 @@ export function SpeakerDetail({ speaker, backHref = '/speakers' }: SpeakerDetail
             <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-start lg:justify-end">
               <Button
                 variant="outline"
-                className="border-white/20 bg-white/10 text-white hover:bg-white/15"
+                className="border-on-dark/20 bg-on-dark/10 text-on-dark hover:bg-on-dark/15"
                 onClick={handleShare}
               >
                 <Share2 className="size-4" />
@@ -116,14 +116,14 @@ export function SpeakerDetail({ speaker, backHref = '/speakers' }: SpeakerDetail
               </Button>
               <Button
                 variant="outline"
-                className="border-white/20 bg-white/10 text-white hover:bg-white/15"
+                className="border-on-dark/20 bg-on-dark/10 text-on-dark hover:bg-on-dark/15"
                 onClick={handleCopy}
               >
                 <Copy className="size-4" />
                 Copy link
               </Button>
               {copyMessage ? (
-                <span className="text-sm text-white/70">{copyMessage}</span>
+                <span className="text-sm text-on-dark/70">{copyMessage}</span>
               ) : null}
             </div>
           </div>
@@ -132,8 +132,8 @@ export function SpeakerDetail({ speaker, backHref = '/speakers' }: SpeakerDetail
 
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:gap-14">
-          <section className="overflow-hidden rounded-3xl border border-border/70 bg-card px-6 py-8 sm:px-8">
-            <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-[#0bbbef]">
+          <section className="overflow-hidden rounded-2xl border border-border/70 bg-card px-6 py-8 sm:px-8">
+            <p className="mb-5 annotation text-signal-ink">
               About
             </p>
             <p className="whitespace-pre-line text-base leading-7 text-muted-foreground">
@@ -161,12 +161,12 @@ export function SpeakerDetail({ speaker, backHref = '/speakers' }: SpeakerDetail
 
           <section
             className={cn(
-              'overflow-hidden rounded-3xl border border-border/70 bg-card px-6 py-8 sm:px-8',
+              'overflow-hidden rounded-2xl border border-border/70 bg-card px-6 py-8 sm:px-8',
               'lg:sticky lg:top-24',
             )}
           >
-            <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-[#0bbbef]">
-              Sessions at CNS Munich
+            <p className="mb-5 annotation text-signal-ink">
+              Sessions
             </p>
 
             {sessions.length > 0 ? (

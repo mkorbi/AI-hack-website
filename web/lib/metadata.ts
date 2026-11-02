@@ -3,15 +3,24 @@ import type { Metadata } from 'next';
 import { siteState } from '@/lib/site-state';
 
 export const SITE_CONFIG = {
-  name: 'CNS Munich',
+  name: 'AI Hack Fest',
   title: siteState.metadata.title,
-  shortTitle: 'CNS Munich',
+  shortTitle: 'AI Hack Fest',
   description: siteState.metadata.description,
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://cloudnativesummit.de',
   image: '/opengraph-image',
   locale: 'en',
   twitterHandle: '@cnsmunich',
-  keywords: ['Cloud Native', 'Kubernetes', 'Munich', 'Conference', 'DevOps', 'CNCF', 'Summit'],
+  keywords: [
+    'AI Hack Fest',
+    'AI Engineering',
+    'AI Platforms',
+    'LLMOps',
+    'Agents',
+    'Munich',
+    'Hackathon',
+    'Conference',
+  ],
 } as const;
 
 type CreateMetadataOptions = {

@@ -64,11 +64,11 @@ export function SpeakersTeaser({ presentation, tone = 'default' }: SpeakersTease
         <MotionReveal>
           {isLineup ? (
             <>
-              <h2 className="font-heading text-3xl font-bold leading-[1.08] tracking-tight text-primary sm:text-4xl lg:text-5xl">
+              <h2 className="font-heading text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-primary sm:text-4xl lg:text-5xl">
                 {archived ? 'Meet the people' : presentation.speakerTitleLead}
                 {' '}
                 <br />
-                <span className="text-[#0bbbef]">
+                <span className="text-signal-ink">
                   {archived ? 'who shared openly' : presentation.speakerTitleAccent}
                 </span>
               </h2>
@@ -77,16 +77,16 @@ export function SpeakersTeaser({ presentation, tone = 'default' }: SpeakersTease
                   ? presentation.speakerDescription
                   : archived
                     ? `${speakerData.length} speakers made CNS Munich ${EVENT_CONFIG.archive.edition} a place for practical knowledge and honest exchange.`
-                    : `${speakerData.length} speakers sharing knowledge across cloud native, platform engineering, and open source.`}
+                    : `${speakerData.length} speakers sharing what they built across AI engineering and AI platforms.`}
               </p>
             </>
           ) : (
             <>
-              <h2 className="font-heading text-3xl font-bold leading-[1.08] tracking-tight text-primary sm:text-4xl lg:text-5xl">
+              <h2 className="font-heading text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-primary sm:text-4xl lg:text-5xl">
                 {presentation.speakerTitleLead},
                 {' '}
                 <br />
-                <span className="text-[#0bbbef]">{presentation.speakerTitleAccent}</span>
+                <span className="text-signal-ink">{presentation.speakerTitleAccent}</span>
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
                 {presentation.speakerDescription}
